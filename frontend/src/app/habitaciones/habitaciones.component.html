@@ -1,0 +1,334 @@
+<!-- ====== SECCIÓN PRINCIPAL DE HABITACIONES ====== -->
+<div class="container-habitaciones">
+  <h2>Sección de Habitaciones</h2>
+
+  <!-- ====== BARRA DE RESERVAS ====== -->
+  <section class="barra-reservas-hilton">
+    <form
+      class="reserva-form"
+      autocomplete="off"
+      (submit)="enviarFormReserva($event)"
+    >
+      <div class="reserva-row">
+        <div class="campo">
+          <label for="destino">¿Dónde?</label>
+          <input
+            type="text"
+            id="destino"
+            name="Destino"
+            placeholder="Buscar destino o habitación"
+            required
+          />
+        </div>
+        <div class="campo">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" name="Check-in" required />
+        </div>
+        <div class="campo">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" name="Check-out" required />
+        </div>
+        <div class="campo">
+          <label for="huespedes">Huéspedes</label>
+          <input
+            type="number"
+            id="huespedes"
+            name="Huéspedes"
+            min="1"
+            value="1"
+            required
+          />
+        </div>
+        <div class="campo-boton">
+          <button
+            type="button"
+            (click)="mostrarModal = true"
+            class="special-rates-btn"
+          >
+            Tarifas especiales
+          </button>
+        </div>
+        <div class="campo-boton">
+          <!-- Botón submit para enviar el formulario por correo -->
+          <button
+            class="btn-reservar"
+            type="submit"
+            style="display: inline-block;"
+          >
+            Reservar ahora
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- ====== MODAL DE TARIFAS ESPECIALES ====== -->
+  <div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal-special-rates">
+      <button type="button" class="modal-close" (click)="mostrarModal = false">×</button>
+      <h3>Tarifas especiales</h3>
+      <div class="modal-grid">
+        <label><input type="checkbox" name="UsarPuntos"> Usar puntos</label>
+        <label><input type="checkbox" name="AgenteViajes"> Agente de viajes</label>
+        <label><input type="checkbox" name="AAA"> Tarifa AAA</label>
+        <label><input type="checkbox" name="Senior"> Tarifa senior</label>
+        <label><input type="checkbox" name="GobiernoMilitar"> Gobierno o militar</label>
+      </div>
+      <div class="modal-inputs">
+        <div>
+          <label>Promoción</label>
+          <input type="text" name="Promocion">
+        </div>
+        <div>
+          <label>Grupo</label>
+          <input type="text" name="Grupo">
+        </div>
+        <div>
+          <label>Empresa</label>
+          <input type="text" name="Empresa">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" (click)="mostrarModal = false" class="modal-btn">Listo</button>
+        <button type="button" (click)="mostrarModal = false" class="modal-btn-cancel">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <!-- FIN MODAL -->
+
+  <!-- ====== GRID DE TARJETAS DE HABITACIONES ====== -->
+  <div class="habitaciones-grid">
+    <div
+      class="habitacion-card"
+      *ngFor="let habitacion of habitaciones"
+      (click)="abrirModal(habitacion)"
+    >
+      <img [src]="habitacion.imagenes[0]" [alt]="habitacion.nombre" class="habitacion-img" />
+      <div class="habitacion-header">
+        <h3>{{ habitacion.nombre }}</h3>
+      </div>
+      <div class="habitacion-body">
+        <p>{{ habitacion.descripcion }}</p>
+        <div class="habitacion-precio">
+          ${{ habitacion.precio }} <span class="por-noche">/noche</span>
+        </div>
+        <!-- Enlace a reservas como btn en card -->
+        <a
+          class="btn-reservar"
+          [routerLink]="['/reservar']"
+          (click)="$event.stopPropagation()"
+        >
+          Reservar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== MODAL PARA VER IMÁGENES EN CARRUSEL ====== -->
+<div class="modal-fondo" *ngIf="selectedHabitacion" (click)="cerrarModal()">
+  <div class="modal-contenido" (click)="$event.stopPropagation()">
+    <div style="position:relative;">
+      <img
+        [src]="selectedHabitacion.imagenes[selectedImagenIndex]"
+        [alt]="selectedHabitacion.nombre"
+        class="modal-img"
+      />
+      <!-- Botones de carrusel -->
+      <button
+        class="carrusel-btn prev"
+        (click)="anteriorImagen(); $event.stopPropagation()"
+        *ngIf="selectedHabitacion.imagenes.length > 1"
+      >&lt;</button>
+      <button
+        class="carrusel-btn next"
+        (click)="siguienteImagen(); $event.stopPropagation()"
+        *ngIf="selectedHabitacion.imagenes.length > 1"
+      >&gt;</button>
+    </div>
+    <h3>{{ selectedHabitacion.nombre }}</h3>
+    <p>{{ selectedHabitacion.descripcion }}</p>
+    <div class="habitacion-precio">
+      ${{ selectedHabitacion.precio }} <span class="por-noche">/noche</span>
+    </div>
+    <a
+      class="btn-reservar"
+      [routerLink]="['/reservar']"
+    >
+      Reservar
+    </a>
+    <button class="btn-cerrar" (click)="cerrarModal()">Cerrar</button>
+    <!-- Miniaturas de imágenes si hay más de una -->
+    <div class="miniaturas" *ngIf="selectedHabitacion.imagenes.length > 1">
+      <img
+        *ngFor="let img of selectedHabitacion.imagenes; let idx = index"
+        [src]="img"
+        [alt]="selectedHabitacion.nombre + ' ' + (idx + 1)"
+        [class.activo]="idx === selectedImagenIndex"
+        (click)="selectedImagenIndex = idx"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECCIÓN DE PROMOCIONES ====== -->
+<section class="promociones-hotel">
+  <h2>¡Promociones exclusivas!</h2>
+  <div class="promociones-grid">
+    <div class="promo-card" *ngFor="let promo of promociones">
+      <img
+        [src]="promo.imagen"
+        [alt]="promo.nombre"
+        class="promo-img"
+        (click)="abrirPromoModal(promo)"
+        style="cursor:pointer;"
+      >
+      <div class="promo-info">
+        <h3>{{ promo.nombre }}</h3>
+        <p>{{ promo.descripcion }}</p>
+        <span class="promo-vigencia">{{ promo.vigencia }}</span>
+        <a
+          class="promo-btn"
+          [routerLink]="['/reservar']"
+        >Reservar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MODAL PARA VER PROMO EN GRANDE ====== -->
+<div class="modal-fondo" *ngIf="promoSeleccionada" (click)="cerrarPromoModal()">
+  <div class="modal-contenido" (click)="$event.stopPropagation()">
+    <img [src]="promoSeleccionada.imagen" [alt]="promoSeleccionada.nombre" class="modal-img" />
+    <h3>{{ promoSeleccionada.nombre }}</h3>
+    <p>{{ promoSeleccionada.descripcion }}</p>
+    <span class="promo-vigencia">{{ promoSeleccionada.vigencia }}</span>
+    <a
+      class="promo-btn"
+      [routerLink]="['/reservar']"
+    >Reservar</a>
+    <button class="btn-cerrar" (click)="cerrarPromoModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ====== SECCIÓN DE ALQUILER DE AUTOS ====== -->
+<section class="seccion-alquiler-autos">
+  <h2>¡Alquile su vehículo con nosotros!</h2>
+  <div class="autos-carrusel">
+    <div
+      class="promo-card"
+
+
+
+
+
+
+      
+      *ngFor="let auto of autos"
+      (click)="abrirModalAuto(auto)"
+      style="cursor:pointer"
+    >
+      <img [src]="auto.imagen" [alt]="auto.modelo" class="promo-img">
+      <div class="promo-info">
+        <h3>{{ auto.marca }} {{ auto.modelo }}</h3>
+        <p>{{ auto.descripcion }}</p>
+        <div class="auto-precio">${{ auto.precio }}/día</div>
+        <a
+          class="btn-alquilar"
+          href="https://www.milescarrentalmiami.com/es/"
+          target="_blank"
+          (click)="$event.stopPropagation()"
+        >Alquilar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MODAL DE AUTO EN GRANDE ====== -->
+<div class="modal-fondo" *ngIf="autoSeleccionado" (click)="cerrarModalAuto()">
+  <div class="modal-contenido" (click)="$event.stopPropagation()">
+    <img
+      [src]="autoSeleccionado.imagen"
+      [alt]="autoSeleccionado.modelo"
+      class="modal-img"
+    />
+    <h3>{{ autoSeleccionado.marca }} {{ autoSeleccionado.modelo }}</h3>
+    <p>{{ autoSeleccionado.descripcion }}</p>
+    <div class="auto-precio">${{ autoSeleccionado.precio }}/día</div>
+    <a
+      class="btn-alquilar"
+      href="https://www.milescarrentalmiami.com/es/"
+      target="_blank"
+    >Alquilar</a>
+    <button class="btn-cerrar" (click)="cerrarModalAuto()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ====== SECCIÓN RESTAURANTES ====== -->
+<section class="seccion-restaurantes">
+  <h2>Restaurantes & Bares</h2>
+  <div class="restaurantes-carrusel">
+    <div
+      class="restaurante-card"
+      *ngFor="let rest of restaurantes"
+      (click)="abrirModalRestaurante(rest)"
+      style="cursor:pointer"
+    >
+      <img [src]="rest.imagenes[0]" [alt]="rest.nombre" class="restaurante-img">
+      <div class="restaurante-info">
+        <h3>{{ rest.nombre }}</h3>
+        <p>{{ rest.descripcion }}</p>
+        <div class="restaurante-horario">Horario: {{ rest.horario }}</div>
+        <a
+  class="restaurante-btn"
+  [href]="rest.menuPdf"
+  target="_blank"
+  (click)="$event.stopPropagation()"
+>
+  Ver menú
+</a>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MODAL DE RESTAURANTE CON CARRUSEL ====== -->
+<div class="modal-fondo" *ngIf="restauranteSeleccionado" (click)="cerrarModalRestaurante()">
+  <div class="modal-contenido" (click)="$event.stopPropagation()">
+    <div style="position:relative;">
+      <img
+        [src]="restauranteSeleccionado.imagenes[restauranteImagenIndex]"
+        [alt]="restauranteSeleccionado.nombre"
+        class="modal-img"
+      />
+      <!-- Botones de carrusel -->
+      <button
+        class="carrusel-btn prev"
+        (click)="anteriorImagenRestaurante(); $event.stopPropagation()"
+        *ngIf="restauranteSeleccionado.imagenes.length > 1"
+      >&lt;</button>
+      <button
+        class="carrusel-btn next"
+        (click)="siguienteImagenRestaurante(); $event.stopPropagation()"
+        *ngIf="restauranteSeleccionado.imagenes.length > 1"
+      >&gt;</button>
+    </div>
+    <h3>{{ restauranteSeleccionado.nombre }}</h3>
+    <p>{{ restauranteSeleccionado.descripcionLarga }}</p>
+    <div class="restaurante-horario">Horario: {{ restauranteSeleccionado.horario }}</div>
+    <button class="btn-cerrar" (click)="cerrarModalRestaurante()">Cerrar</button>
+    <!-- Miniaturas de imágenes si hay más de una -->
+    <div class="miniaturas" *ngIf="restauranteSeleccionado.imagenes.length > 1">
+      <img
+        *ngFor="let img of restauranteSeleccionado.imagenes; let idx = index"
+        [src]="img"
+        [alt]="restauranteSeleccionado.nombre + ' ' + (idx + 1)"
+        [class.activo]="idx === restauranteImagenIndex"
+        (click)="restauranteImagenIndex = idx"
+      />
+    </div>
+  </div>
+</div>

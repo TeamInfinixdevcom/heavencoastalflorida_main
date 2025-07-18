@@ -1,0 +1,54 @@
+    <footer class="miami-footer">
+    <div class="footer-led-bar"></div>
+    <div class="footer-content">
+        <!-- Branding y contacto -->
+        <div class="footer-brand">
+        <span class="logo">Coastal <span>Haven Florida</span></span>
+        <p class="slogan">Donde tus vacaciones se encuentran con el paraíso</p>
+        <div class="footer-contacto">
+            <a href="tel:+1234567890"><i class="fas fa-phone"></i> +1 234 567 890</a>
+            <a href="mailto:info@coastalhavenflorida.com"><i class="fas fa-envelope"></i> info&#64;coastalhavenflorida.com</a>
+            <span><i class="fas fa-map-marker-alt"></i> 123 Ocean Drive, Miami, FL</span>
+        </div>
+        </div>
+        <!-- Links principales y legales -->
+        <div class="footer-links">
+        <a [routerLink]="['/']">Inicio</a>
+        <a [routerLink]="['/habitaciones']">Habitaciones</a>
+        <a [routerLink]="['/galeria']">Galería</a>
+        <a [routerLink]="['/reservar']">Reservar</a>
+        <a [routerLink]="['/contacto']">Contacto</a>
+        <a [routerLink]="['/privacidad']">Política de privacidad</a>
+        <a [routerLink]="['/terminos']">Términos y condiciones</a>
+        </div>
+        <!-- Redes sociales -->
+        <div class="footer-social">
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/50670000000" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        </div>
+        <!-- Certificados/metodos de pago opcionales -->
+        <div class="footer-certificados">
+        <a [routerLink]="['/reservar']" title="Reservar">
+            <img src="assets/inicio/payment/visa.png" alt="Visa" />
+        </a>
+        <a [routerLink]="['/reservar']" title="Reservar">
+            <img src="assets/inicio/payment/mastercard.png" alt="Mastercard" />
+        </a>
+        <a [routerLink]="['/reservar']" title="Reservar">
+            <img src="assets/inicio/payment/tripadvisor.png" alt="TripAdvisor" />
+        </a>
+        </div>
+    </div> <!-- CIERRE CORRECTO DE .footer-content -->
+
+    <div class="footer-bottom">
+        <span>© {{year}} Coastal Haven Florida. Todos los derechos reservados.</span>
+        <span class="footer-powered">Powered by <strong>Infinix dev</strong></span>
+    </div>
+    </footer>

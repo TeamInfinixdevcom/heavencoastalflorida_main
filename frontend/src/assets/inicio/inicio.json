@@ -1,0 +1,11 @@
+[
+  { "src": "assets/inicio/nochedrive.jpg", "alt": "Vista nocturna moderna del hotel" },
+  { "src": "assets/inicio/casino.jpg", "alt": "Interior de casino elegante" },
+  { "src": "assets/inicio/casino-personas.jpg", "alt": "Personas divirtiéndose en casino" },
+  { "src": "assets/inicio/habitacion-king.jpg", "alt": "Habitación King de hotel" },
+  { "src": "assets/inicio/habitacion-ninos.jpg", "alt": "Habitación temática para niños" },
+  { "src": "assets/inicio/personasjugandovolley.jpg", "alt": "Turistas jugando volley en la piscina" },
+  { "src": "assets/inicio/bano-king.jpg", "alt": "Baño moderno habitación king" },
+  { "src": "assets/inicio/alcoba-king.jpg", "alt": "Alcoba habitación king con vista al mar" },
+  { "src": "assets/inicio/area-ninos.jpg", "alt": "Área de juegos infantil tipo playground en hotel" }
+]

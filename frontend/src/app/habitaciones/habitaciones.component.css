@@ -1,0 +1,577 @@
+            /* ----- CONTENEDOR PRINCIPAL DE HABITACIONES ----- */
+            .container-habitaciones {
+            /* max-width: 900px; */    /* Elimine o comente esta línea */
+            width: 100%;
+            margin: 0 auto;
+            padding: 2em 1em;
+            text-align: center;
+            }
+
+            /* ----- GRID DE TARJETAS DE HABITACIONES ----- */
+            .habitaciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive */
+            gap: 2em;
+            margin-top: 2em;
+            }
+
+            /* ----- TARJETA INDIVIDUAL DE HABITACIÓN ----- */
+            .habitacion-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            padding: 2em 1.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.18s;
+            cursor: pointer;
+            /* min-height: 410px;  Opcional si quiere que todas sean igual de altas */
+            }
+
+            /* Efecto al pasar el mouse */
+            .habitacion-card:hover {
+            transform: translateY(-6px) scale(1.025);
+            }
+
+            /* ----- TITULO DE LA HABITACIÓN ----- */
+            .habitacion-header h3 {
+            margin-bottom: 0.7em;
+            color: #26547c;
+            }
+
+            /* ----- DESCRIPCIÓN Y CUERPO DE LA HABITACIÓN ----- */
+            .habitacion-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            }
+
+            /* ----- PRECIO ----- */
+            .habitacion-precio {
+            font-weight: bold;
+            color: #0b8457;
+            font-size: 1.3em;
+            margin-bottom: 1em;
+            }
+            .por-noche {
+            font-size: 0.9em;
+            color: #888;
+            }
+
+            /* ----- BOTÓN RESERVAR EN LA TARJETA ----- */
+            .btn-reservar {
+            padding: 0.6em 1.8em;
+            background: #26547c;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.18s;
+            margin-bottom: 0.5em;
+            margin-top: auto;  /* Esto es la clave para alinear todos abajo */
+            align-self: center; /* Centra el botón horizontalmente */
+            }
+            .btn-reservar:hover {
+            background: #0b8457;
+            }
+
+            /* ----- IMAGEN PRINCIPAL EN TARJETA ----- */
+            .habitacion-img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover; /* recorta imagen para que siempre se vea bien */
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 1em;
+            }
+
+            /* ====== MODAL (VENTANA EMERGENTE) ====== */
+            .modal-fondo {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65); /* fondo negro translúcido */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            }
+            .modal-contenido {
+            background: #fff;
+            border-radius: 18px;
+            padding: 2em 2em 1.5em 2em;
+            max-width: 800px;      /* ancho del modal */
+            width: 95vw;           /* ancho en móvil */
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+            position: relative;
+            animation: aparecerModal 0.23s;
+            }
+            /* Animación de aparición del modal */
+            @keyframes aparecerModal {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+            }
+            /* ----- IMAGEN GRANDE EN EL MODAL ----- */
+            .modal-img {
+            width: 100%;
+            max-height: 430px;     /* alto máximo de la imagen */
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.2em;
+            }
+            /* ====== BOTONES DEL CARRUSEL (FLECHAS) ====== */
+            .carrusel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(40,40,40,0.4);
+            border: none;
+            color: #fff;
+            font-size: 2em;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            outline: none;
+            }
+            .carrusel-btn:hover {
+            background: rgba(20,20,20,0.7);
+            }
+            .carrusel-btn.prev { left: 10px; }
+            .carrusel-btn.next { right: 10px; }
+            /* ----- BOTÓN DE CERRAR MODAL ----- */
+            .btn-cerrar {
+            margin-top: 1em;
+            background: #d7263d;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5em 1.4em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.16s;
+            }
+            .btn-cerrar:hover {
+            background: #7c1322;
+            }
+            /* ====== MINIATURAS DE IMAGENES (DEBAJO DEL MODAL) ====== */
+            .miniaturas {
+            margin-top: 1em;
+            display: flex;
+            justify-content: center;
+            gap: 0.6em;
+            }
+            .miniaturas img {
+            width: 48px;
+            height: 36px;
+            object-fit: cover;
+            border-radius: 7px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border 0.2s, box-shadow 0.2s;
+            }
+            .miniaturas img.activo {
+            border: 2px solid #26547c;
+            box-shadow: 0 2px 10px rgba(38,84,124,0.15);
+            }
+            /* ====== RESPONSIVE PARA MÓVIL ====== */
+            @media (max-width: 600px) {
+            .modal-contenido {
+                padding: 1em 0.5em;
+            }
+            .modal-img {
+                max-height: 240px;
+            }
+            }
+
+            /* ----- SECCIÓN DE PROMOCIONES EN HABITACIONES ----- */
+            .promociones-hotel {
+            padding: 2em 0 3em 0; /* espacio arriba y abajo */
+            background: linear-gradient(120deg, #e5f3ff 0%, #f7eaff 100%); /* fondo suave */
+            text-align: center;
+            }
+            /* Título del bloque de promociones */
+            .promociones-hotel h2 {
+            color: #ff53a6;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1.1px;
+            }
+            /* Grid flexible para las promos, responsivo */
+            .promociones-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2em; /* espacio entre promos */
+            justify-content: center;
+            }
+            /* Card de cada promoción */
+            .promo-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 22px #8a36ff15;
+            max-width: 340px;
+            width: 100%;
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.16s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            }
+            /* Efecto al pasar el mouse sobre la card */
+            .promo-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 10px 36px #ff53a633;
+            }
+            /* Imagen de la promo, horizontal */
+            .promo-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover; /* recorta la imagen para que no se deforme */
+            display: block;
+            }
+            /* Contenido de la promo (nombre, desc, vigencia, botón) */
+            .promo-info {
+            padding: 1.3em 1.2em 1.1em 1.2em;
+            }
+            /* Nombre de la promo */
+            .promo-info h3 {
+            margin-top: 0;
+            color: #26547c;
+            font-size: 1.23rem;
+            }
+            /* Descripción */
+            .promo-info p {
+            color: #444;
+            font-size: 1rem;
+            margin-bottom: 0.6em;
+            }
+            /* Vigencia o fechas de la promo */
+            .promo-vigencia {
+            display: block;
+            color: #ff53a6;
+            font-size: 0.96em;
+            margin-bottom: 1.1em;
+            }
+            /* Botón de reservar promo */
+            .promo-btn {
+            background: #26547c;
+            color: #fff;
+            border: none;
+            border-radius: 9px;
+            padding: 0.55em 1.4em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.18s;
+            }
+            .promo-btn:hover {
+            background: #ff53a6;
+            }
+            /* ----- RESPONSIVE para móvil ----- */
+            @media (max-width: 750px) {
+            .promociones-grid {
+                flex-direction: column;
+                gap: 1.1em;
+                align-items: center;
+            }
+            .promo-card {
+                max-width: 97vw;
+                min-width: 0;
+            }
+            .promo-img {
+                height: 130px;
+            }
+            }
+        /* ----------- BARRA DE RESERVAS ----------- */
+        .barra-reservas-hilton {
+        box-shadow: 0 8px 28px #7b32ff25, 0 2px 6px #8a36ff15;
+        width: 100vw;
+        background: #fff;
+        box-shadow: 0 8px 32px #7b32ff13;
+        padding: 1.6rem 0 0.6rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9;
+        position: relative;
+        margin-top: 0px;
+        }
+        .reserva-form {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px #0001;
+        padding: 1.1rem 1rem;
+        margin: 0 auto;
+        max-width: 1100px;
+        width: 100%;
+        }
+        .reserva-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        }
+        .campo {
+        display: flex;
+        flex-direction: column;
+        min-width: 140px;
+        flex: 1 1 150px;
+        }
+        .campo label {
+        font-size: .98rem;
+        font-weight: 600;
+        color: #232665;
+        margin-bottom: 0.15rem;
+        margin-left: 0.1rem;
+        }
+        .campo input,
+        .campo select {
+        padding: 0.5rem 0.6rem;
+        font-size: 1.01rem;
+        border: 1px solid #bdb9e6;
+        border-radius: 7px;
+        outline: none;
+        height: 42px;
+        box-sizing: border-box;
+        }
+        .campo input:focus {
+        border-color: #7b32ff;
+        box-shadow: 0 0 4px #7b32ff24;
+        }
+        .campo-boton {
+        min-width: 140px;
+        flex: none;
+        display: flex;
+        gap: 0.6rem;
+        }
+        .campo-boton button,
+        .campo-boton a {
+        width: 100%;
+        height: 42px;
+        background: linear-gradient(90deg,#7b32ff,#3b65c6 80%);
+        color: #fff;
+        font-size: 1.07em;
+        font-weight: 700;
+        border: none;
+        border-radius: 7px;
+        padding: 0.67em 1.4em;
+        box-shadow: 0 2px 10px #7b32ff25;
+        cursor: pointer;
+        transition: background 0.22s, transform 0.13s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none; /* Para los <a> */
+        }
+        .campo-boton button:hover,
+        .campo-boton a:hover {
+        background: linear-gradient(90deg,#3b65c6,#7b32ff 80%);
+        transform: scale(1.05);
+        }
+
+        /* Responsive SOLO cuando la pantalla es muy pequeña */
+        @media (max-width: 900px) {
+        .reserva-row {
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        }
+        @media (max-width: 650px) {
+        .reserva-row {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .campo-boton {
+            min-width: 100%;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .campo-boton button,
+        .campo-boton a {
+            width: 100%;
+        }
+        }
+    /* SECCION DE AUTOS */
+    .seccion-alquiler-autos {
+    background: #f7faff;
+    padding: 2em 0;
+    text-align: center;
+    }
+    .autos-carrusel {
+    display: flex;
+    gap: 2em;
+    overflow-x: auto;
+    padding: 1em 0.5em;
+    justify-content: center;
+    }
+    .auto-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px #7b32ff11;
+    padding: 1em 1em 1.2em 1em;
+    min-width: 240px;
+    max-width: 280px;
+    flex: 0 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    .auto-img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    background: #f4f4ff;
+    }
+    .auto-info h3 {
+    font-size: 1.07em;
+    color: #26547c;
+    margin-bottom: 0.25em;
+    }
+    .auto-info p {
+    font-size: 0.97em;
+    color: #444;
+    margin-bottom: 0.4em;
+    }
+    .auto-precio {
+    font-weight: bold;
+    color: #0b8457;
+    margin-bottom: 0.8em;
+    }
+    .btn-alquilar {
+    background: #26547c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1.4em;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background 0.18s;
+    }
+    .btn-alquilar:hover {
+    background: #ff53a6;
+    }
+/* ===== SECCIÓN DE RESTAURANTES ===== */
+.seccion-restaurantes {
+  background: #fdf6ee;
+  padding: 2.5em 0;
+  text-align: center;
+}
+
+.seccion-restaurantes h2 {
+  color: #b8650a;
+  font-size: 2.1rem;
+  margin-bottom: 1.8rem;
+}
+
+/* ---- Carrusel/row de restaurantes ---- */
+.restaurantes-carrusel {
+  display: flex;
+  gap: 2em;
+  overflow-x: auto;
+  padding: 1em 0.5em;
+  justify-content: center;
+}
+
+/* ---- Card de restaurante (igual al resto de cards) ---- */
+.restaurante-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 2em 1.2em;
+  min-height: 410px;   /* Unifica altura con promos/autos/habitaciones */
+  max-width: 320px;    /* Igual a promos/autos/habitaciones */
+  width: 100%;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.18s, box-shadow 0.2s;
+}
+
+.restaurante-card:hover {
+  transform: translateY(-7px) scale(1.025);
+  box-shadow: 0 10px 36px #b8650a33;
+}
+
+/* ---- Imagen restaurante (misma altura que autos/promos) ---- */
+.restaurante-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 1em;
+  background: #fff9f0;
+}
+
+/* ---- Texto de la card ---- */
+.restaurante-info h3 {
+  font-size: 1.07em;
+  color: #b8650a;
+  margin-bottom: 0.35em;
+}
+
+.restaurante-info p {
+  font-size: 0.97em;
+  color: #444;
+  margin-bottom: 0.4em;
+}
+
+.restaurante-horario {
+  font-size: 0.97em;
+  color: #26547c;
+  margin-bottom: 0.7em;
+}
+
+/* ---- Botón de menú ---- */
+.restaurante-btn {
+  background: #b8650a;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6em 1.8em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  margin-bottom: 0.5em;
+  margin-top: auto;
+  align-self: center;
+}
+.restaurante-btn:hover {
+  background: #eeb84a;
+  color: #654100;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 900px) {
+  .restaurante-card {
+    min-height: 350px;
+    max-width: 95vw;
+    padding: 1.1em 0.5em;
+  }
+  .restaurante-img {
+    height: 120px;
+  }
+}
+@media (max-width: 600px) {
+  .restaurante-card {
+    min-height: 250px;
+    max-width: 99vw;
+    padding: 0.9em 0.2em;
+  }
+  .restaurante-img {
+    height: 90px;
+  }
+}

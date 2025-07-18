@@ -1,0 +1,181 @@
+.miami-navbar {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #1b1132 60%, #ff53a6 130%);
+    box-shadow: 0 2px 24px 0 #ff53a615;
+    padding: 0 4vw;
+    height: 96px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    border-radius: 0;
+    overflow-x: hidden;
+}
+
+/* LOGO NUEVO CON NOMBRE PEGADO Y BRILLITO */
+.header-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 14px; /* Puede ajustar si lo quiere aún más pegado */
+    background: rgba(255,255,255,0.09);
+    padding: 8px 28px 8px 16px;
+    border-radius: 2rem;
+    transition: box-shadow 0.18s;
+    box-shadow: 0 2px 16px #8a36ff12;
+    cursor: pointer;
+    text-decoration: none;
+}
+.hotel-logo {
+    height: 64px;
+    width: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 14px #ff53a648;
+    margin-right: 0;
+}
+.hotel-nombre {
+    color: #fff;
+    font-size: 2.6rem; /* ¡MUY GRANDE! Puede subir a 3rem si lo quiere gigante */
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    user-select: none;
+    text-shadow: 0 2px 28px #ff53a6cc, 0 2px 8px #18112e;
+    display: flex;
+    align-items: center;
+}
+.hotel-nombre .rosa {
+    color: #ff53a6;
+    font-weight: 700;
+    margin-left: 10px;
+    text-shadow: 0 2px 24px #8a36ff99, 0 0px 16px #ff53a688;
+}
+
+/* Navbar links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 3rem;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 !important;
+    background: none;
+}
+.nav-links li a {
+    color: #fff;
+    font-size: 1.55rem;
+    font-family: 'Open Sans', sans-serif;
+    padding: 16px 32px;
+    border-radius: 0 !important;
+    font-weight: 600;
+    position: relative;
+    transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.18s;
+    text-decoration: none;
+    z-index: 1;
+    text-shadow: 0 1px 12px #8a36ff44, 0 2px 2px #18112e99;
+    letter-spacing: 1.3px;
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+    background: #ff53a6e6;
+    color: #fff;
+    box-shadow: 0 2px 18px #ff53a670;
+    transform: scale(1.08);
+}
+
+/* Línea LED animada debajo del menú: más gruesa y vibrante */
+.led-bar {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -18px;
+    height: 10px;
+    background: linear-gradient(90deg, #ff53a6 15%, #8a36ff 65%, #2b6cb0 100%);
+    box-shadow: 0 0 36px 10px #ff53a6cc, 0 0 80px 24px #8a36ff44;
+    border-radius: 0;
+    animation: ledmove 3.8s linear infinite;
+    z-index: 5;
+    opacity: 0.94;
+}
+
+@keyframes ledmove {
+    0% { filter: brightness(1.1) blur(2px);}
+    50% { filter: brightness(1.7) blur(7px);}
+    100% { filter: brightness(1.1) blur(2px);}
+}
+
+/* Menú móvil (hamburger) */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 7px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 51;
+    padding: 12px;
+    margin-left: 2rem;
+}
+.burger span {
+    width: 38px;
+    height: 6px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #ff53a6, #8a36ff 70%);
+    box-shadow: 0 2px 12px #8a36ff66;
+    display: block;
+    transition: all 0.25s cubic-bezier(.6,-0.28,.74,.05);
+}
+
+/* Responsive para móvil */
+@media (max-width: 900px) {
+    .miami-navbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 0 0.8rem;
+    }
+    .header-logo-group {
+        padding: 4px 8px 4px 8px;
+        gap: 8px;
+    }
+    .hotel-logo {
+        height: 44px;
+        width: 44px;
+    }
+    .hotel-nombre {
+        font-size: 1.5rem;
+    }
+    .nav-links {
+        flex-direction: column;
+        background: linear-gradient(120deg, #18112e 80%, #ff53a6 130%);
+        position: absolute;
+        top: 96px;
+        left: 0;
+        width: 100vw;
+        padding: 2.5rem 0 2.5rem 0;
+        gap: 2.6rem;
+        box-shadow: 0 12px 36px #8a36ff44;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-34px);
+        transition: opacity 0.38s, transform 0.38s;
+        border-radius: 0 !important;
+    }
+    .nav-links.open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+    .burger {
+        display: flex;
+    }
+    .led-bar {
+        top: 100%;
+        height: 8px;
+    }
+}

@@ -1,0 +1,36 @@
+<!-- Sección Hero llamativa -->
+<section class="hero-section">
+  <div class="overlay">
+    <!-- Aquí su contenido hero -->
+  </div>
+</section>
+
+<!-- Sección Galería -->
+<div class="galeria-container">
+  <h2>Galería de fotos</h2>
+
+  <div class="galeria-grid">
+    <img
+      *ngFor="let img of imagenes"
+      [src]="img.src"
+      [alt]="img.alt"
+      class="galeria-img"
+      loading="lazy"
+      (click)="openModal(img.src, img.alt)"
+    />
+  </div>
+
+  <div *ngIf="imagenes.length === 0" class="no-imagenes">
+    No hay imágenes para mostrar en este momento.
+  </div>
+
+  <!-- Modal para imagen grande -->
+  <div class="modal-backdrop" [class.active]="modalOpen" (click)="closeModal()">
+    <img
+      class="modal-img"
+      [src]="selectedImageSrc"
+      [alt]="selectedImageAlt"
+      (click)="$event.stopPropagation()"
+    />
+  </div>
+</div>

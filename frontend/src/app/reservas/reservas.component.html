@@ -1,0 +1,290 @@
+<section class="reservas-grid">
+
+  <!-- HABITACIONES -->
+  <div class="reservas-col">
+    <h2 class="titulo-vertical-superior">Habitaciones</h2>
+
+    <label for="habitacionDropdown"><strong>Selecciona una habitación:</strong></label>
+    <select id="habitacionDropdown" class="habitacion-select"
+      [(ngModel)]="habitacionSeleccionada"
+      (change)="onCambiarHabitacion()"
+      [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let h of habitaciones" [ngValue]="h">{{ h.nombre }}</option>
+    </select>
+
+    <ng-container *ngIf="habitacionSeleccionada">
+      <img [src]="habitacionSeleccionada.imagenes[0]" [alt]="habitacionSeleccionada.nombre" class="habitacion-img-vertical">
+      <div class="habitacion-info-vertical">
+        <h3>{{ habitacionSeleccionada.nombre }}</h3>
+        <p>{{ habitacionSeleccionada.descripcion }}</p>
+        <div class="habitacion-precio">
+          ${{ habitacionSeleccionada.precio }} <span class="por-noche">/noche</span>
+        </div>
+        <form class="formulario-reserva" #formH="ngForm" (ngSubmit)="false">
+          <label>Nombre completo</label>
+          <input type="text" name="nombreH" [(ngModel)]="nombreCliente" required>
+          <label>Correo electrónico</label>
+          <input type="email" name="correoH" [(ngModel)]="correoCliente" required>
+          <label>Teléfono</label>
+          <input type="tel" name="telefonoH" [(ngModel)]="telefonoCliente" required pattern="[0-9]{8,}" title="Ingrese un número válido">
+
+          <!-- Campos de tarjeta -->
+          <label>Nombre en la tarjeta</label>
+          <input type="text" name="tarjetaNombreH" [(ngModel)]="tarjetaNombreCliente" required>
+
+          <label>Número de tarjeta</label>
+          <input type="text" name="tarjetaNumeroH" [(ngModel)]="tarjetaNumeroCliente" pattern="[0-9]{16}" maxlength="16" required title="16 dígitos numéricos">
+
+          <label>CVV</label>
+          <input type="text" name="cvvH" [(ngModel)]="cvvCliente" pattern="[0-9]{3}" maxlength="3" required title="3 dígitos numéricos">
+
+          <label>Check-in</label>
+          <input type="date" name="checkinH" [(ngModel)]="checkin" (change)="actualizarCheckOutMin()" required>
+          <label>Check-out</label>
+          <input type="date" name="checkoutH" [(ngModel)]="checkout" [min]="checkin" required>
+          <label>Comentarios</label>
+          <textarea name="comentariosH" [(ngModel)]="comentariosCliente" rows="2"></textarea>
+          <div *ngIf="facturaGenerada" class="factura-info">
+            <p><strong>Factura:</strong> {{ facturaGenerada }}</p>
+            <p><strong>Noches:</strong> {{ noches }}</p>
+            <p><strong>Total a pagar:</strong> ${{ totalCalculado }}</p>
+          </div>
+          <button type="button" class="btn-descargar" (click)="generarFactura(habitacionSeleccionada)">
+            Factura PDF
+          </button>
+          <button type="button" class="btn-reservar" (click)="enviarReservaPorCorreo(habitacionSeleccionada)">
+            Reservar
+          </button>
+        </form>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="habitaciones.length === 0">
+      <p style="text-align:center; color:#888; font-style:italic;">No hay habitaciones disponibles en este momento.</p>
+    </ng-container>
+  </div>
+
+  <!-- RESTAURANTES -->
+  <div class="reservas-col">
+    <h2 class="titulo-vertical-superior">Restaurantes</h2>
+
+    <label for="restauranteDropdown"><strong>Selecciona un restaurante:</strong></label>
+    <select id="restauranteDropdown" class="habitacion-select"
+      [(ngModel)]="restauranteSeleccionado"
+      (change)="onCambiarRestaurante()"
+      [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let r of restaurantes" [ngValue]="r">{{ r.nombre }}</option>
+    </select>
+
+    <ng-container *ngIf="restauranteSeleccionado">
+      <img [src]="restauranteSeleccionado.imagenes[0]" [alt]="restauranteSeleccionado.nombre" class="habitacion-img-vertical">
+      <div class="habitacion-info-vertical">
+        <h3>{{ restauranteSeleccionado.nombre }}</h3>
+        <p>{{ restauranteSeleccionado.descripcion }}</p>
+        <div class="habitacion-precio">
+          <span>Horario: {{ restauranteSeleccionado.horario }}</span>
+        </div>
+        <form class="formulario-reserva" #formR="ngForm" (ngSubmit)="false">
+          <label>Nombre completo</label>
+          <input type="text" name="nombreR" [(ngModel)]="nombreRestaurante" required>
+          <label>Correo electrónico</label>
+          <input type="email" name="correoR" [(ngModel)]="correoRestaurante" required>
+          <label>Teléfono</label>
+          <input type="tel" name="telefonoR" [(ngModel)]="telefonoRestaurante" required pattern="[0-9]{8,}" title="Ingrese un número válido">
+
+          <!-- Campos de tarjeta -->
+          <label>Nombre en la tarjeta</label>
+          <input type="text" name="tarjetaNombreR" [(ngModel)]="tarjetaNombreRestaurante" required>
+
+          <label>Número de tarjeta</label>
+          <input type="text" name="tarjetaNumeroR" [(ngModel)]="tarjetaNumeroRestaurante" pattern="[0-9]{16}" maxlength="16" required title="16 dígitos numéricos">
+
+          <label>CVV</label>
+          <input type="text" name="cvvR" [(ngModel)]="cvvRestaurante" pattern="[0-9]{3}" maxlength="3" required title="3 dígitos numéricos">
+
+          <label>Fecha de reserva</label>
+          <input type="date" name="fecha_reservaR" [(ngModel)]="checkinRestaurante" required>
+          <label>Hora</label>
+          <input type="time" name="hora_reservaR" [(ngModel)]="horaRestaurante" required>
+          <label>Comentarios</label>
+          <textarea name="comentariosR" [(ngModel)]="comentariosRestaurante" rows="2"></textarea>
+          <button type="button" class="btn-reservar" (click)="enviarReservaPorCorreoRestaurante(restauranteSeleccionado)">
+            Reservar
+          </button>
+          <a *ngIf="restauranteSeleccionado.menuPdf"
+             [href]="restauranteSeleccionado.menuPdf"
+             download
+             class="btn-menu-pdf">
+            Menú PDF
+          </a>
+        </form>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="restaurantes.length === 0">
+      <p style="text-align:center; color:#888; font-style:italic;">No hay restaurantes disponibles en este momento.</p>
+    </ng-container>
+  </div>
+
+  <!-- AUTOS -->
+  <div class="reservas-col">
+    <h2 class="titulo-vertical-superior">Autos</h2>
+
+    <label for="autoDropdown"><strong>Selecciona un auto:</strong></label>
+    <select id="autoDropdown" class="habitacion-select"
+      [(ngModel)]="autoSeleccionado"
+      (change)="onCambiarAuto()"
+      [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let a of autos" [ngValue]="a">{{ a.modelo }}</option>
+    </select>
+
+    <ng-container *ngIf="autoSeleccionado">
+      <img [src]="autoSeleccionado.imagen" [alt]="autoSeleccionado.modelo" class="habitacion-img-vertical">
+      <div class="habitacion-info-vertical">
+        <h3>{{ autoSeleccionado.modelo }}</h3>
+        <p>{{ autoSeleccionado.descripcion }}</p>
+        <div class="habitacion-precio">
+          ${{ autoSeleccionado.precio }} <span class="por-noche">/día</span>
+        </div>
+        <form class="formulario-reserva" #formA="ngForm" (ngSubmit)="false">
+          <label>Nombre completo</label>
+          <input type="text" name="nombreA" [(ngModel)]="nombreAuto" required>
+          <label>Correo electrónico</label>
+          <input type="email" name="correoA" [(ngModel)]="correoAuto" required>
+          <label>Teléfono</label>
+          <input type="tel" name="telefonoA" [(ngModel)]="telefonoAuto" required pattern="[0-9]{8,}" title="Ingrese un número válido">
+
+          <!-- Campos de tarjeta -->
+          <label>Nombre en la tarjeta</label>
+          <input type="text" name="tarjetaNombreA" [(ngModel)]="tarjetaNombreAuto" required>
+
+          <label>Número de tarjeta</label>
+          <input type="text" name="tarjetaNumeroA" [(ngModel)]="tarjetaNumeroAuto" pattern="[0-9]{16}" maxlength="16" required title="16 dígitos numéricos">
+
+          <label>CVV</label>
+          <input type="text" name="cvvA" [(ngModel)]="cvvAuto" pattern="[0-9]{3}" maxlength="3" required title="3 dígitos numéricos">
+
+          <label>Fecha de retiro</label>
+          <input type="date" name="fecha_retiroA" [(ngModel)]="checkinAuto" required>
+          <label>Fecha de devolución</label>
+          <input type="date" name="fecha_devolucionA" [(ngModel)]="checkoutAuto" [min]="checkinAuto" required>
+          <label>Comentarios</label>
+          <textarea name="comentariosA" [(ngModel)]="comentariosAuto" rows="2"></textarea>
+          <div *ngIf="facturaAuto" class="factura-info">
+            <p><strong>Factura:</strong> {{ facturaAuto }}</p>
+            <p><strong>Días:</strong> {{ diasAuto }}</p>
+            <p><strong>Total a pagar:</strong> ${{ totalAuto }}</p>
+          </div>
+          <button type="button" class="btn-descargar" (click)="generarFacturaAuto(autoSeleccionado)">
+            Factura PDF
+          </button>
+          <button type="button" class="btn-reservar" (click)="enviarReservaPorCorreoAuto(autoSeleccionado)">
+            Reservar
+          </button>
+        </form>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="autos.length === 0">
+      <p style="text-align:center; color:#888; font-style:italic;">No hay autos disponibles en este momento.</p>
+    </ng-container>
+  </div>
+
+</section>
+  <!-- DIVISOR VISUAL -->
+  <div class="division-seccion">
+    <span>✈️ Ofrecemos también reservas de vuelos</span>
+  </div>
+
+<section class="reservas-grid">
+
+  
+<div class="vuelos-lateral mapa-destinos">
+  <img src="assets/vuelos/mapa-copa.png" alt="Mapa de destinos Copa Airlines" />
+  <p class="mapa-caption">¡Explorá más de 80 destinos con Copa Airlines!</p>
+  <a href="https://www.flightradar24.com/13.70,-85.47/6" target="_blank" class="btn-mapa-vivo">
+    Ver Mapa de Vuelos en Vivo ✈️
+  </a>
+</div>
+  <!-- MAPA DE DESTINOS (IZQUIERDA de Vuelos) -->
+
+  <!-- VUELOS (CENTRO) -->
+  <div class="reservas-col vuelos-col">
+    <img src="assets/reservas/vuelo/vuelobanner.png" alt="Copa Airlines Banner" class="banner-vuelos-horizontal">
+    <h2 class="titulo-vertical-superior vuelos">Vuelos</h2>
+    <div class="habitacion-info-vertical">
+      <p class="frase-vuelos">
+        <span class="avion-animado" [class.despegando]="cargandoVuelo">✈️</span>
+        Reservá tus vuelos con <strong>Copa Airlines</strong> directamente desde aquí.
+      </p>
+      <form class="formulario-reserva" (ngSubmit)="enviarReservaPorCorreoVuelo()" #formVuelo="ngForm">
+        <label>Nombre completo</label>
+        <input type="text" name="nombreVuelo" [(ngModel)]="nombreVuelo" required>
+        <label>Correo electrónico</label>
+        <input type="email" name="correoVuelo" [(ngModel)]="correoVuelo" required>
+        <label>Teléfono</label>
+        <input type="tel" name="telefonoVuelo" [(ngModel)]="telefonoVuelo" required pattern="[0-9]{8,}">
+        <label>Origen</label>
+        <input type="text" name="origenVuelo" list="destinos" [(ngModel)]="origenVuelo" required>
+        <label>Destino</label>
+        <input type="text" name="destinoVuelo" list="destinos" [(ngModel)]="destinoVuelo" required>
+        <label>Fecha de salida</label>
+        <input type="date" name="fechaSalidaVuelo" [(ngModel)]="fechaSalidaVuelo" required>
+        <label>Fecha de regreso</label>
+        <input type="date" name="fechaRegresoVuelo" [(ngModel)]="fechaRegresoVuelo" required>
+        <label>Pasajeros</label>
+        <input type="number" name="pasajerosVuelo" [(ngModel)]="pasajerosVuelo" required min="1">
+        <button type="submit" class="btn-reservar">
+          Reservar en Copa Airlines
+        </button>
+      </form>
+    </div>
+    <div *ngIf="cargandoVuelo" class="loader-vuelo">
+      <div class="spinner"></div>
+      <p>Reserva enviada... Redirigiendo a Copa Airlines ✈️</p>
+    </div>
+  </div>
+
+  <!-- OFERTAS DEL MES (DERECHA de Vuelos) -->
+  <div class="vuelos-lateral promo">
+    <h3>Ofertas del mes ✈️</h3>
+    <ul>
+      <li>San José - Panamá desde $199</li>
+      <li>Miami - Lima desde $259</li>
+      <li>Bogotá - Cancún desde $275</li>
+      <li>Ciudad de México - Punta Cana desde $299</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DATALIST DE DESTINOS GLOBALES -->
+<datalist id="destinos">
+  <option value="San José, CR (SJO)">
+  <option value="Panamá City, PA (PTY)">
+  <option value="Miami, FL (MIA)">
+  <option value="New York, NY (JFK)">
+  <option value="Los Angeles, CA (LAX)">
+  <option value="Toronto, CA (YYZ)">
+  <option value="London, UK (LHR)">
+  <option value="Paris, FR (CDG)">
+  <option value="Madrid, ES (MAD)">
+  <option value="Frankfurt, DE (FRA)">
+  <option value="Rome, IT (FCO)">
+  <option value="Dubai, AE (DXB)">
+  <option value="Tokyo, JP (NRT)">
+  <option value="Seoul, KR (ICN)">
+  <option value="Sydney, AU (SYD)">
+  <option value="Auckland, NZ (AKL)">
+  <option value="Buenos Aires, AR (EZE)">
+  <option value="Lima, PE (LIM)">
+  <option value="Santiago, CL (SCL)">
+  <option value="Bogotá, CO (BOG)">
+  <option value="Ciudad de México, MX (MEX)">
+  <option value="Cancún, MX (CUN)">
+  <option value="São Paulo, BR (GRU)">
+  <option value="Rio de Janeiro, BR (GIG)">
+  <option value="Johannesburg, ZA (JNB)">
+  <option value="Istanbul, TR (IST)">
+  <option value="Doha, QA (DOH)">
+  <option value="Bangkok, TH (BKK)">
+  <option value="Singapore, SG (SIN)">
+  <option value="Hong Kong, HK (HKG)">
+</datalist>
+

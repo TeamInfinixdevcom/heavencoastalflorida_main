@@ -1,0 +1,370 @@
+
+                    <!-- BARRA DE RESERVAS -->
+    <section class="barra-reservas-hilton">
+    <form
+        class="reserva-form"
+        autocomplete="off"
+        (submit)="enviarFormReserva($event)"
+    >
+        <div class="reserva-row">
+        <div class="campo">
+            <label for="destino">¿Dónde?</label>
+            <input
+            type="text"
+            id="destino"
+            name="Destino"
+            placeholder="Buscar destino o habitación"
+            required
+            />
+        </div>
+        <div class="campo">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="Check-in" required />
+        </div>
+        <div class="campo">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="Check-out" required />
+        </div>
+        <div class="campo">
+            <label for="huespedes">Huéspedes</label>
+            <input
+            type="number"
+            id="huespedes"
+            name="Huéspedes"
+            min="1"
+            value="1"
+            required
+            />
+        </div>
+        <div class="campo-boton">
+            <button
+            type="button"
+            (click)="mostrarModal = true"
+            class="special-rates-btn"
+            >
+            Tarifas especiales
+            </button>
+        </div>
+        <div class="campo-boton">
+            <button type="submit">Reservar ahora</button>
+        </div>
+        </div>
+    </form>
+    </section>
+
+
+
+
+        <!-- MODAL DE TARIFAS ESPECIALES -->
+        <div class="modal-overlay" *ngIf="mostrarModal">
+        <div class="modal-special-rates">
+            <button type="button" class="modal-close" (click)="mostrarModal = false">×</button>
+            <h3>Tarifas especiales</h3>
+            <div class="modal-grid">
+            <label><input type="checkbox" name="UsarPuntos"> Usar puntos</label>
+            <label><input type="checkbox" name="AgenteViajes"> Agente de viajes</label>
+            <label><input type="checkbox" name="AAA"> Tarifa AAA</label>
+            <label><input type="checkbox" name="Senior"> Tarifa senior</label>
+            <label><input type="checkbox" name="GobiernoMilitar"> Gobierno o militar</label>
+            </div>
+            <div class="modal-inputs">
+            <div>
+                <label>Promoción</label>
+                <input type="text" name="Promocion">
+            </div>
+            <div>
+                <label>Grupo</label>
+                <input type="text" name="Grupo">
+            </div>
+            <div>
+                <label>Empresa</label>
+                <input type="text" name="Empresa">
+            </div>
+            </div>
+            <div class="modal-actions">
+            <button type="button" (click)="mostrarModal = false" class="modal-btn">Listo</button>
+            <button type="button" (click)="mostrarModal = false" class="modal-btn-cancel">Cancelar</button>
+            </div>
+        </div>
+        </div>
+        <!-- FIN MODAL -->
+
+    <!-- El resto del HTML sigue igual (carousel, mosaico, servicios, etc) -->
+
+
+
+        <div class="inicio-hero">
+        <!-- Carrusel de imágenes/banner -->
+        <div class="carousel">
+            <div 
+            class="carousel-img" 
+            *ngFor="let img of imagenes; let i = index" 
+            [class.active]="i === imagenActual"
+            [style.backgroundImage]="'url(' + img.url + ')'"
+            [attr.aria-label]="img.alt"
+            >
+            <div class="carousel-caption" *ngIf="img.caption">
+                {{ img.caption }}
+            </div>
+            </div>
+            <button class="carousel-btn left" (click)="anterior()" aria-label="Anterior">‹</button>
+            <button class="carousel-btn right" (click)="siguiente()" aria-label="Siguiente">›</button>
+            <!-- Opcional: indicadores -->
+            <div class="carousel-dots">
+            <span 
+                *ngFor="let img of imagenes; let i = index"
+                class="dot"
+                [class.active]="i === imagenActual"
+                (click)="irAImagen(i)"
+                [attr.aria-label]="'Ir a imagen ' + (i + 1)"
+            ></span>
+            </div>
+        </div>
+
+        <!-- Contenido sobre el banner -->
+        <div class="inicio-hero-content">
+            <h1>Coastal Haven Florida</h1>
+            <p>Donde tus vacaciones se encuentran con el paraíso</p>
+            <button [routerLink]="['/reservar']">Reservar Ahora</button>
+        </div>
+        </div>
+
+        <!-- HERO MOSAICO -->
+        <div class="hero-carousel hero-mosaico">
+        <div class="hero-mosaico-list" [class.slide]="animandoMosaico" [style.transform]="transformMosaico">
+            <div
+            class="hero-mosaico-img"
+            *ngFor="let img of grupoImagenesHero"
+            [style.backgroundImage]="'url(' + img.src + ')'"
+            [attr.aria-label]="img.alt"
+            (click)="pausarMosaico()"
+            style="cursor: pointer;"
+            ></div>
+        </div>
+        <button class="hero-carousel-btn left" (click)="anteriorHero()" aria-label="Anterior">‹</button>
+        <button class="hero-carousel-btn right" (click)="siguienteHero()" aria-label="Siguiente">›</button>
+        </div>
+
+                <!-- SECCIÓN DE SERVICIOS DESTACADOS (ALTERNADO) -->
+            <section class="servicios-destacados">
+    <h2 class="servicios-title-impact">
+    <i class="fas fa-star"></i>
+    Servicios de clase mundial
+    <span class="servicios-rosa">&nbsp;Coastal Haven</span>
+    </h2>
+
+        <div class="servicios-grid">
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/wifi.jpg" alt="WiFi de alta velocidad">
+            </div>
+            <div class="servicio-titulo">WiFi de alta velocidad</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/piscina.jpg" alt="Piscina de lujo">
+            </div>
+            <div class="servicio-titulo">Piscina de lujo</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/desayuno.jpg" alt="Desayuno incluido">
+            </div>
+            <div class="servicio-titulo">Desayuno incluido</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/gym.jpg" alt="Gimnasio 24/7">
+            </div>
+            <div class="servicio-titulo">Gimnasio 24/7</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/parqueo.jpg" alt="Parqueo 24/7">
+            </div>
+            <div class="servicio-titulo">Parqueo 24/7</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/anfi-ext.jpg" alt="Anfiteatro exterior">
+            </div>
+            <div class="servicio-titulo">Fines de Semana 8pm (Externo)</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/anfi-int.jpg" alt="Anfiteatro interior">
+            </div>
+            <div class="servicio-titulo">Fines de Semana 8pm (Interno)</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/spa.jpg" alt="Spa y centro de bienestar">
+            </div>
+            <div class="servicio-titulo">Spa y centro de bienestar</div>
+            </div>
+            <div class="servicio">
+            <div class="servicio-img-container">
+                <img src="assets/inicio/servicios/valet-parking.jpg" alt="Valet Parking">
+            </div>
+            <div class="servicio-titulo">Valet Parking</div>
+            </div>
+        </div>
+        </section>
+        
+        <!-- CENTRO DE CAMBIO DE DINERO Y UBICACIÓN -->
+        <section class="money-exchange-section">
+        <h2 class="section-title-principal">Centro de cambio y ubicación</h2>
+        <div class="exchange-location-container">
+            <!-- Tipo de cambio -->
+            <div class="exchange-card">
+        <h2 class="exchange-title">Tipo de cambio internacional</h2>
+        <div class="exchange-anim-container">
+            
+            <div class="exchange-currency-slide" *ngIf="divisas.length && tipoCambio[divisas[divisaActual].codigo] !== undefined">
+            <span class="exchange-currency-code">
+                {{ divisas[divisaActual].codigo }}
+            </span>
+            <span class="exchange-currency-simbolo">
+                {{ divisas[divisaActual].simbolo }}
+            </span>
+            <span class="exchange-rate-anim">
+                {{ tipoCambio[divisas[divisaActual].codigo] | number:'1.2-2' }}
+            </span>
+            </div>
+            <div class="exchange-currency-nombre">
+            {{ divisas[divisaActual].nombre }}
+            </div>
+        </div>
+        <small class="exchange-updated">Actualizado en tiempo real</small>
+        </div>
+
+            <!-- Mapa -->
+            <div class="map-card">
+            <h2 class="exchange-title">Ubicación</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.953335624443!2d-122.08424968469265!3d37.42199977982511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb24ca0c6a61d%3A0x2b8c8f4c3bdbdbb3!2sGoogleplex!5e0!3m2!1sen!2sus!4v1679999999999"
+                width="100%" height="270" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a href="https://maps.google.com/?q=Googleplex" target="_blank" class="exchange-map-link">Ver en Google Maps</a>
+            </div>
+        </div>
+        </section>
+
+        <!-- CENTROS DE CAMBIO DE DINERO EN EL HOTEL -->
+        <section class="money-exchange-section">
+        <h2 class="money-exchange-title">Centros de cambio de dinero en el hotel</h2>
+        <div class="money-exchange-content">
+            <!-- Carrusel de imágenes (Angular binding) -->
+            <div class="money-exchange-carousel">
+            <img
+                [src]="moneyExchangeImages[moneyExchangeIndex].src"
+                [alt]="moneyExchangeImages[moneyExchangeIndex].alt"
+                class="money-exchange-img"
+            >
+            </div>
+            <!-- Lista de centros -->
+            <div class="money-exchange-list">
+            <h3>Opciones disponibles:</h3>
+            <ul>
+                <li>Sunset Exchange</li>
+                <li>Lobby Exchange Center</li>
+                <li>Tropical Cash</li>
+                <li>Premium Dollar Point</li>
+                <li>TravelMoney Express</li>
+            </ul>
+            </div>
+        </div>
+        </section>
+
+        <!-- Tipo de cambio (fetch, puede quedar en main.ts o en un service si quieres más orden) -->
+        <script>
+        fetch('https://api.frankfurter.app/latest?from=USD&to=CRC')
+        .then(r => r.json())
+        .then(data => {
+            const rate = data.rates.CRC;
+            document.getElementById('usd-rate').textContent = `₡${rate.toLocaleString('es-CR', {minimumFractionDigits:2})}`;
+        })
+        .catch(() => {
+            document.getElementById('usd-rate').textContent = 'Error al cargar';
+        });
+        </script>
+        
+    <!-- INTER DE MIAMIIIIIIIIII ANUNCIO) -->
+    <section class="tour-inter-miami-section">
+    <h2 class="titulo-tour-inter-miami">
+        <span class="logo-inter-miami">⚽</span>
+        Tour VIP Inter Miami Stadium
+    </h2>
+    <div class="galeria-inter-miami">
+        <div class="tour-card" (click)="abrirZoomTour(0)">
+        <img src="assets/inicio/tourstadio/miamistadiumlefft.jpg" alt="Entrada principal del estadio" />
+        <div class="tour-info">
+            <h4>Entrada VIP DRV PNK Stadium</h4>
+            <p>Acceso exclusivo a la zona VIP, donde inicia la experiencia del tour. Viví la emoción desde la puerta del estadio de Messi y el Inter Miami.</p>
+        </div>
+        </div>
+        <div class="tour-card" (click)="abrirZoomTour(1)">
+        <img src="assets/inicio/tourstadio/miamistadiumrigth.jpg" alt="Tienda y balones Inter Miami" />
+        <div class="tour-info">
+            <h4>Souvenirs y Tienda Oficial</h4>
+            <p>Llevate recuerdos únicos, balones rosados y camisas del Inter Miami. ¡El lugar perfecto para una foto de colección!</p>
+        </div>
+        </div>
+        <div class="tour-card" (click)="abrirZoomTour(2)">
+        <img src="assets/inicio/tourstadio/miamitour1.jpg" alt="Camerino Inter Miami" />
+        <div class="tour-info">
+            <h4>Zona de Camerinos</h4>
+            <p>Entrá a los camerinos donde Messi y las estrellas del club se preparan antes de cada partido. ¡Sentite parte del equipo!</p>
+        </div>
+        </div>
+        <div class="tour-card" (click)="abrirZoomTour(3)">
+        <img src="assets/inicio/tourstadio/miamitour2.jpg" alt="Cancha y estadio Inter Miami" />
+        <div class="tour-info">
+            <h4>La Cancha y Experiencia VIP</h4>
+            <p>Pisá el césped, tomá fotos en la banca y mirá el estadio desde la perspectiva de los jugadores. ¡Vas a querer volver todos los años!</p>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ZOOM MODAL PARA TODAS LAS IMÁGENES DEL TOUR -->
+    <div class="zoom-overlay-tour" *ngIf="zoomTourAbierto !== null" (click)="cerrarZoomTour()">
+    <div class="zoom-tour-modal" (click)="$event.stopPropagation()">
+        <img [src]="imagenesTourInterMiami[zoomTourAbierto].src" [alt]="imagenesTourInterMiami[zoomTourAbierto].alt">
+        <div class="zoom-tour-info">
+        <h4>{{ imagenesTourInterMiami[zoomTourAbierto].titulo }}</h4>
+        <p>{{ imagenesTourInterMiami[zoomTourAbierto].desc }}</p>
+        </div>
+        <button class="cerrar-zoom-tour" (click)="cerrarZoomTour()">×</button>
+    </div>
+    </div>
+
+
+
+            <!-- TESTIMONIOS -->
+            <section class="testimonios">
+            <h2>Lo que dicen nuestros huéspedes</h2>
+            <div class="testimonios-list">
+                <div class="testimonio">
+                <img src="assets/inicio/carla-costarica.jpg" alt="Foto de Carla">
+                <blockquote>
+                    “Un lugar increíble, con una atención de primera. ¡Volveré pronto!”
+                </blockquote>
+                <span>- Carla, Costa Rica</span>
+                </div>
+                <div class="testimonio">
+                <img src="assets/inicio/jose-mexico.jpg" alt="Foto de José">
+                <blockquote>
+                    “Las habitaciones, la piscina y el ambiente son espectaculares.”
+                </blockquote>
+                <span>- José, México</span>
+                </div>
+                <div class="testimonio">
+                <img src="assets/inicio/ana-espana.jpg" alt="Foto de Ana">
+                <blockquote>
+                    “Me encantó la ubicación y la amabilidad del personal. Muy recomendado.”
+                </blockquote>
+                <span>- Ana, España</span>
+                </div>
+            </div>
+            </section>

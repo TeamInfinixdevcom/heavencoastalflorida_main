@@ -1,0 +1,31 @@
+<nav class="miami-navbar">
+  <header class="main-header">
+    <!-- Logo + nombre con borde redondeado, hace click y lleva al inicio -->
+    <a class="header-logo-group" [routerLink]="['/']" aria-label="Ir al inicio">
+      <img src="assets/logodelhotel/logo.jpg" alt="Coastal Haven Florida Logo" class="hotel-logo" />
+      <span class="hotel-nombre">
+        Coastal <span class="rosa">Haven Florida</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <!-- Si ocupa otros elementos a la derecha del logo, agréguelo aquí -->
+    </nav>
+  </header>
+
+  <!-- Links de navegación -->
+  <ul class="nav-links" [class.open]="menuOpen">
+    <li><a [routerLink]="['/']">Inicio</a></li>
+    <li><a [routerLink]="['/habitaciones']">Habitaciones</a></li>
+    <li><a [routerLink]="['/galeria']">Galería</a></li>
+    <li><a [routerLink]="['/reservar']">Reservar</a></li>
+    <li><a [routerLink]="['/contacto']">Contacto</a></li>
+    <span class="led-bar"></span>
+  </ul>
+
+  <!-- Botón menú móvil -->
+  <button class="burger" (click)="menuOpen = !menuOpen" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>

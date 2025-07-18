@@ -1,0 +1,728 @@
+/* GRID PRINCIPAL DE TRES COLUMNAS */
+        .reservas-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        width: 100%;
+        max-width: 1500px;
+        margin: 6rem auto 0 auto;
+        background: none;
+        }
+
+        .reservas-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #fff;
+        border-radius: 22px;
+        box-shadow: 0 8px 32px #522fae16, 0 2px 8px #00000011;
+        padding: 2.2rem 1.5rem 2rem 1.5rem;
+        min-width: 320px;
+        min-height: 680px;
+        position: relative;
+        transition: box-shadow 0.23s;
+        }
+
+        .reservas-col:hover {
+        box-shadow: 0 12px 40px #ff53a633, 0 2px 16px #00000014;
+        }
+
+        /* TITULOS SUPERIORES DE CADA COLUMNA */
+        .titulo-vertical-superior {
+        font-size: 2.3rem;
+        font-weight: 800;
+        color: #522fae;
+        text-align: center;
+        margin-bottom: 1.2rem;
+        letter-spacing: 0.01em;
+        text-shadow: 0 3px 16px #522fae1a, 0 1px 2px #fff;
+        }
+
+        .titulo-vertical {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #26547c;
+        text-align: center;
+        margin-bottom: 1.2rem;
+        letter-spacing: 0.02em;
+        }
+
+        .habitacion-img-vertical {
+        width: 220px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 14px;
+        margin: 0 auto 1.3rem auto;
+        box-shadow: 0 4px 18px #0001;
+        border: 2px solid #f4f6fa;
+        display: block;
+        }
+
+        .habitacion-info-vertical {
+        width: 100%;
+        margin-bottom: 0.7rem;
+        text-align: left;
+        }
+
+        .habitacion-info-vertical h3 {
+        margin: 0 0 0.5rem 0;
+        color: #26547c;
+        font-size: 1.45rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        }
+
+        .habitacion-info-vertical p {
+        color: #444;
+        font-size: 1rem;
+        margin-bottom: 0.9rem;
+        }
+
+        .habitacion-precio {
+        font-weight: bold;
+        color: #0b8457;
+        font-size: 1.25rem;
+        margin-bottom: 1.15rem;
+        }
+
+        .habitacion-precio span {
+        font-weight: 500;
+        color: #178150;
+        font-size: 1rem;
+        }
+
+        .habitacion-select {
+        width: 90%;
+        padding: 0.5rem 0.8rem;
+        font-size: 1.09rem;
+        border-radius: 8px;
+        border: 1px solid #d9d8e7;
+        background: #faf9ff;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 4px #522fae10;
+        color: #3d2463;
+        transition: border 0.17s;
+        }
+
+        .habitacion-select:focus {
+        border-color: #ff53a6;
+        outline: none;
+        }
+
+        /* FORMULARIO GENERAL */
+        .formulario-reserva {
+        display: flex;
+        flex-direction: column;
+        gap: 0.58rem;
+        margin-top: 0.4rem;
+        }
+
+        .formulario-reserva label {
+        font-weight: 600;
+        font-size: 0.98rem;
+        color: #26547c;
+        margin-top: 0.1rem;
+        }
+
+        /* Detalle visual para campos de tarjeta */
+        .formulario-reserva input[name^="tarjeta"],
+        .formulario-reserva input[name^="cvv"] {
+        background: #fafbff;
+        font-family: 'Fira Mono', monospace;
+        letter-spacing: 0.08em;
+        }
+
+        .formulario-reserva input,
+        .formulario-reserva textarea,
+        .formulario-reserva select {
+        padding: 0.48rem 0.65rem;
+        font-size: 1rem;
+        border: 1.5px solid #d9d8e7;
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        background: #fafbff;
+        transition: border 0.18s;
+        }
+
+        .formulario-reserva input:focus,
+        .formulario-reserva textarea:focus {
+        border: 1.5px solid #ff53a6;
+        outline: none;
+        }
+
+        .formulario-reserva button {
+        margin-top: 0.62rem;
+        background: #26547c;
+        color: #fff;
+        padding: 0.7rem 1.5rem;
+        border: none;
+        border-radius: 11px;
+        font-size: 1.04rem;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 1.5px 8px #26547c14;
+        transition: background 0.19s, transform 0.12s;
+        }
+
+        .formulario-reserva button.btn-descargar {
+        background: #0b8457;
+        margin-bottom: 0.15rem;
+        }
+
+        .formulario-reserva button:hover {
+        background: #ff53a6;
+        color: #fff;
+        transform: translateY(-2px) scale(1.035);
+        }
+
+        .formulario-reserva button.btn-descargar:hover {
+        background: #178150;
+        color: #fff;
+        }
+
+        .btn-menu-pdf {
+        display: inline-block;
+        margin-top: 1.1rem;
+        background: linear-gradient(90deg, #0b8457 60%, #52e6c9 100%);
+        color: #fff;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 0.65rem 1.5rem;
+        text-decoration: none;
+        box-shadow: 0 1px 8px #26547c21;
+        font-size: 1.05rem;
+        letter-spacing: 0.02em;
+        border: none;
+        cursor: pointer;
+        transition:
+            background 0.23s cubic-bezier(.5,0,.5,1.1),
+            transform 0.16s cubic-bezier(.45,.3,.55,1.25),
+            box-shadow 0.18s;
+        }
+
+        .btn-menu-pdf:hover, .btn-menu-pdf:focus {
+        background: linear-gradient(92deg, #52e6c9 0%, #0b8457 95%);
+        color: #fff;
+        box-shadow: 0 3px 20px #0b845735;
+        transform: scale(1.07) translateY(-3px);
+        text-decoration: none;
+        outline: none;
+        }
+
+        .factura-info {
+        background: #f0f8ff;
+        padding: 0.7rem 1.2rem;
+        border-left: 4px solid #26547c;
+        margin-top: 1.15rem;
+        border-radius: 8px;
+        font-weight: bold;
+        color: #26547c;
+        box-shadow: 0 2px 12px #26547c21;
+        font-size: 1.03rem;
+        }
+
+        .factura-info p {
+        margin: 0.34rem 0;
+        color: #26547c;
+        font-weight: 600;
+        }
+
+        /* Placeholder de mensaje cuando está vacío */
+        .reservas-col p[style*="italic"] {
+        margin: 2.7rem 0 0 0;
+        font-size: 1.06rem;
+        }
+
+        /* RESPONSIVE para tablets y celulares */
+        @media (max-width: 1150px) {
+        .reservas-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 600px;
+        }
+        .reservas-col {
+            min-width: 0;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        }
+        @media (max-width: 750px) {
+        .reservas-grid {
+            gap: 1.2rem;
+            max-width: 99vw;
+        }
+        .reservas-col {
+            padding: 1.5rem 0.3rem 1.8rem 0.3rem;
+        }
+        .habitacion-img-vertical {
+            width: 90vw;
+            max-width: 320px;
+            height: 120px;
+        }
+        }
+        .btn-reservar[href] {
+        display: block;
+        text-align: center;
+        background: #26547c;
+        color: #fff !important;
+        font-weight: bold;
+        padding: 0.7rem 1.5rem;
+        border-radius: 11px;
+        font-size: 1.04rem;
+        margin-top: 1rem;
+        text-decoration: none;
+        box-shadow: 0 1.5px 8px #26547c14;
+        transition: background 0.19s, transform 0.12s;
+        }
+
+        .btn-reservar[href]:hover {
+        background: #ff53a6;
+        color: #fff !important;
+        transform: translateY(-2px) scale(1.035);
+        }
+        /* División elegante entre secciones */
+        .division-seccion {
+        width: 100%;
+        text-align: center;
+        margin: 4rem 0 2rem 0;
+        border-top: 2px dashed #ccc;
+        position: relative;
+        }
+        .division-seccion span {
+        position: relative;
+        top: -0.9rem;
+        background: #fff;
+        padding: 0 1rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #522fae;
+        text-shadow: 0 1px 4px #ccc8;
+        }
+
+        /* Banner de vuelos */
+        .banner-vuelos {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1.2rem;
+        }
+        .banner-vuelos img {
+        width: 100%;
+        max-height: 120px;
+        object-fit: cover;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px #0002;
+        margin-bottom: 0.8rem;
+        }
+        .banner-vuelos h2 {
+        margin-top: 0;
+        }
+
+        /* Alineación ícono + título */
+        .titulo-vertical-superior.vuelos::before {
+        content: "✈️ ";
+        margin-right: 8px;
+        }
+
+        /* Ajustes para enlaces con clase de botón */
+        .btn-reservar[href] {
+        display: block;
+        text-align: center;
+        background: #26547c;
+        color: #fff !important;
+        font-weight: bold;
+        padding: 0.7rem 1.5rem;
+        border-radius: 11px;
+        font-size: 1.04rem;
+        margin-top: 1rem;
+        text-decoration: none;
+        box-shadow: 0 1.5px 8px #26547c14;
+        transition: background 0.19s, transform 0.12s;
+        }
+        .btn-reservar[href]:hover {
+        background: #ff53a6;
+        color: #fff !important;
+        transform: translateY(-2px) scale(1.035);
+        }
+        .banner-vuelos-horizontal {
+        width: 100%;
+        max-height: 110px;
+        object-fit: cover;
+        border-radius: 14px;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+    /* División entre secciones */
+    .division-seccion {
+    width: 100%;
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+    border-top: 2px dashed #ccc;
+    position: relative;
+    }
+    .division-seccion span {
+    position: relative;
+    top: -0.9rem;
+    background: #fff;
+    padding: 0 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #522fae;
+    text-shadow: 0 1px 4px #ccc8;
+    }
+
+    /* Banner horizontal a lo largo */
+    .banner-vuelos-horizontal {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
+
+        /* Ícono de avión en el título */
+        .titulo-vertical-superior.vuelos::before {
+        content: "✈️ ";
+        margin-right: 8px;
+        }
+    .loader-vuelo {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #005bac;
+    animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .loader-vuelo .spinner {
+    width: 30px;
+    height: 30px;
+    margin: 10px auto;
+    border: 4px solid #ccc;
+    border-top: 4px solid #005bac;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+    }
+
+
+
+/* ======================================= */
+/*            SECCIÓN DE VUELOS            */
+/* ======================================= */
+
+/* Fondo celeste elegante para toda la columna de vuelos */
+.vuelos-col {
+  background-color: #e8f4fc; /* celeste suave Copa */
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 112, 184, 0.15);
+  margin-top: 2rem;
+}
+
+/* Franja destacada para la frase de introducción */
+.vuelos-col .frase-vuelos {
+  font-size: 1.09rem;
+  font-weight: 600;
+  color: #003865;
+  background-color: #d4edff;
+  padding: 0.7rem 1.1rem;
+  border-left: 5px solid #0070b8;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.01em;
+  /* CENTRAR */
+  justify-content: center;
+  text-align: center;
+  /* OPCIONAL: poner borde a ambos lados para mayor simetría */
+  border-right: 5px solid #0070b8;
+}
+
+/* Formularios de vuelos: inputs y selects compactos */
+.vuelos-col input,
+.vuelos-col select,
+.vuelos-col textarea {
+  padding: 0.32rem 0.65rem;        /* MÁS DELGADO */
+  border-radius: 7px;
+  border: 1.3px solid #c8d6e5;
+  margin-bottom: 0.6rem;
+  width: 100%;
+  font-size: 0.97rem;
+  background: #fff;
+  transition: border-color 0.17s, box-shadow 0.18s;
+  box-sizing: border-box;
+}
+
+/* Labels de formulario */
+.vuelos-col label {
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 2px;
+  font-size: 0.99rem;
+  letter-spacing: 0.01em;
+}
+
+/* Centrar el formulario y limitar el ancho en desktop */
+.vuelos-col .formulario-reserva {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Borde azul animado al enfocar */
+.vuelos-col input:focus,
+.vuelos-col select:focus,
+.vuelos-col textarea:focus {
+  border-color: #0070b8;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 112, 184, 0.15);
+  background: #f3faff;
+}
+
+/* Botón profesional */
+.vuelos-col .btn-reservar {
+  background-color: #1f4e79;
+  color: #fff;
+  padding: 0.66rem 0.5rem;
+  border-radius: 7px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-bottom: 4px solid #0e3352;
+  cursor: pointer;
+  font-size: 1.08rem;
+  margin-top: 0.3rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 20px #1f4e7940;
+  transition: background 0.2s, box-shadow 0.18s, border-bottom 0.2s;
+}
+
+.vuelos-col .btn-reservar:hover {
+  background-color: #15416a;
+  border-bottom: 4px solid #1f4e79;
+  color: #fff;
+  box-shadow: 0 12px 36px #0e335266;
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .vuelos-col {
+    padding: 1rem 0.3rem;
+  }
+  .vuelos-col .formulario-reserva {
+    max-width: 99vw;
+  }
+}
+/* Animación de avión vibrando/despegando */
+.avion-animado {
+  display: inline-block;
+  animation: avionVuela 1.8s infinite cubic-bezier(.57,.21,.69,1.25);
+  font-size: 1.13em;
+}
+
+@keyframes avionVuela {
+  0%,100% { transform: translateY(0) rotate(-5deg);}
+  20% { transform: translateY(-2px) rotate(-7deg);}
+  30% { transform: translateY(-4px) rotate(-5deg);}
+  40% { transform: translateY(-6px) rotate(-2deg);}
+  50% { transform: translateY(-8px) rotate(0deg);}
+  60% { transform: translateY(-5px) rotate(1deg);}
+  70% { transform: translateY(-2px) rotate(0deg);}
+  80% { transform: translateY(0) rotate(-2deg);}
+}
+/* Animación base del avión */
+.avion-animado {
+  display: inline-block;
+  animation: avionVuela 1.8s infinite cubic-bezier(.57,.21,.69,1.25);
+  font-size: 1.13em;
+  transition: transform 0.6s cubic-bezier(.46,1.47,.49,.98), opacity 0.5s;
+}
+
+/* Efecto de despegue cuando está enviando */
+.avion-animado.despegando {
+  transform: translateX(160px) translateY(-50px) scale(1.2) rotate(-18deg);
+  opacity: 0;
+  animation: none !important;
+}
+
+/* Keyframes del avioncito */
+@keyframes avionVuela {
+  0%,100% { transform: translateY(0) rotate(-5deg);}
+  20% { transform: translateY(-2px) rotate(-7deg);}
+  30% { transform: translateY(-4px) rotate(-5deg);}
+  40% { transform: translateY(-6px) rotate(-2deg);}
+  50% { transform: translateY(-8px) rotate(0deg);}
+  60% { transform: translateY(-5px) rotate(1deg);}
+  70% { transform: translateY(-2px) rotate(0deg);}
+  80% { transform: translateY(0) rotate(-2deg);}
+}
+/* ======================= */
+/*  LAYOUT DE VUELOS GRID  */
+/* ======================= */
+
+/* Grid de tres columnas solo para vuelos */
+.reservas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1500px;
+  margin: 6rem auto 0 auto;
+  background: none;
+}
+
+/* Laterales: mapa y ofertas */
+.vuelos-lateral {
+  background: #f4fbff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px #0070b80a;
+  padding: 1.6rem 1.2rem 1.4rem 1.2rem;
+  margin: 0.8rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 380px;
+  justify-content: flex-start;
+}
+
+/* Imagen del mapa */
+.mapa-destinos img {
+  width: 95%;
+  max-width: 260px;
+  margin-bottom: 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 18px #005bac21;
+}
+.mapa-caption {
+  color: #1f4e79;
+  font-size: 0.99rem;
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+/* Ofertas del mes */
+.promo h3 {
+  color: #26547c;
+  font-size: 1.11rem;
+  margin-bottom: 1rem;
+}
+.promo ul {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+.promo ul li {
+  background: #e8f4fc;
+  margin-bottom: 0.7rem;
+  border-radius: 7px;
+  padding: 0.58rem 0.8rem;
+  color: #003865;
+  font-size: 0.98rem;
+  box-shadow: 0 1px 6px #26547c13;
+  transition: background 0.23s;
+}
+.promo ul li:hover {
+  background: #c7e9fc;
+}
+
+/* ========== AJUSTES ESPECÍFICOS VUELOS-GRID ========== */
+
+/* Responsive: en móvil apilar todas las columnas y reducir paddings */
+@media (max-width: 1050px) {
+  .reservas-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    max-width: 99vw;
+  }
+  .vuelos-lateral,
+  .reservas-col.vuelos-col {
+    margin: 0.7rem 0;
+    min-height: unset;
+    width: 100%;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+  .vuelos-col .formulario-reserva {
+    max-width: 99vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .vuelos-lateral {
+    padding: 1.1rem 0.2rem 0.8rem 0.2rem;
+    font-size: 0.97rem;
+    min-height: 190px;
+  }
+  .mapa-destinos img {
+    max-width: 97vw;
+    min-width: 0;
+  }
+  .vuelos-col {
+    padding: 1.2rem 0.2rem;
+    min-width: unset;
+  }
+}
+
+.vuelos-lateral {
+  /* Bajar min-height para que no se vea gigante en móvil */
+  min-height: 240px;
+}
+
+/* Limitar el ancho máximo del banner de vuelos para que no "rompa" el diseño */
+.banner-vuelos-horizontal {
+  max-width: 99vw;
+}
+.division-seccion {
+  width: 100%;
+  text-align: center;
+  margin: 3.6rem 0 2.1rem 0;
+  border-top: 3.5px solid #0070b8;  /* Línea más gruesa y azul Copa */
+  position: relative;
+  height: 0.1rem;
+}
+
+.division-seccion span {
+  position: relative;
+  top: -1.25rem;
+  background: #e8f4fc; /* Fondo celeste para resaltar */
+  padding: 0.45rem 2.7rem;
+  font-weight: bold;
+  font-size: 1.35rem;
+  color: #005bac;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px #005bac22;
+  letter-spacing: 0.01em;
+  border: 2.5px solid #0070b8;
+  display: inline-block;
+}
+.btn-mapa-vivo {
+  background: #005bac;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  display: inline-block;
+  margin-top: 0.8rem;
+  text-decoration: none;
+  box-shadow: 0 2px 10px #0070b82e;
+  transition: background 0.2s, box-shadow 0.18s;
+}
+.btn-mapa-vivo:hover {
+  background: #003866;
+  box-shadow: 0 4px 20px #005bac30;
+}

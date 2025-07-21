@@ -1,1 +1,79 @@
 node_modules/
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# === Angular ===
+/dist/
+tmp/
+out-tsc/
+.bazel-out/
+.angular/cache/
+.angular/config.json
+
+# === Build output ===
+/build/
+coverage/
+logs/
+*.log
+
+# === Environment files ===
+.env
+.env.*
+
+# === IDEs and editors ===
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Except for useful VSCode files
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# === OS generated files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Editor backups and misc ===
+*~
+*.swp
+*.swo
+.history/
+.sass-cache/
+bower_components/
+
+# === Miscellaneous ===
+/typings/
+/jspm_packages/
+/tmp/
+/cache/
+/bower_components/
+/.ftpconfig
+
+# === Test output ===
+/testem.log
+/karma.conf.js
+/protractor.conf.js
+/coverage/
+*.lcov
+
+# === Git ===
+.git/
+.gitignore
+
+# === Others ===
+/cypress/videos/
+/cypress/screenshots/
+
+# === Personal excludes ===
+*.local
+*.bak
+*.old
+*.orig

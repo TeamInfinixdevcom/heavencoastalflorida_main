@@ -1,9 +1,11 @@
+<!-- ================================
+     RESERVAS: Habitaciones, Restaurantes, Autos
+==================================== -->
 <section class="reservas-grid">
 
   <!-- HABITACIONES -->
   <div class="reservas-col">
     <h2 class="titulo-vertical-superior">Habitaciones</h2>
-
     <label for="habitacionDropdown"><strong>Selecciona una habitación:</strong></label>
     <select id="habitacionDropdown" class="habitacion-select"
       [(ngModel)]="habitacionSeleccionada"
@@ -66,7 +68,6 @@
   <!-- RESTAURANTES -->
   <div class="reservas-col">
     <h2 class="titulo-vertical-superior">Restaurantes</h2>
-
     <label for="restauranteDropdown"><strong>Selecciona un restaurante:</strong></label>
     <select id="restauranteDropdown" class="habitacion-select"
       [(ngModel)]="restauranteSeleccionado"
@@ -127,7 +128,6 @@
   <!-- AUTOS -->
   <div class="reservas-col">
     <h2 class="titulo-vertical-superior">Autos</h2>
-
     <label for="autoDropdown"><strong>Selecciona un auto:</strong></label>
     <select id="autoDropdown" class="habitacion-select"
       [(ngModel)]="autoSeleccionado"
@@ -188,24 +188,100 @@
   </div>
 
 </section>
-  <!-- DIVISOR VISUAL -->
-  <div class="division-seccion">
-    <span>✈️ Ofrecemos también reservas de vuelos</span>
+
+<!-- DIVISOR VISUAL -->
+<div class="division-seccion">
+  <span>✈️ Ofrecemos también reservas de vuelos</span>
+</div>
+
+  <!-- =============================
+      SECCIÓN DE VUELOS (SOLO UNA)
+  ============================= -->
+<section class="reservas-grid">
+  <!-- COLUMNA IZQUIERDA: FAQ + CARRUSEL CLIMA -->
+  <div class="reservas-col vuelos-lateral vuelos-faq-clima">
+    <h3 style="color:#1f4e79; font-size: 1.18rem; margin-bottom: 1.2rem;">
+      Preguntas frecuentes de vuelos ✈️
+    </h3>
+    <div class="faq-vuelos" style="text-align:left; margin-bottom:1.6rem;">
+      <details style="margin-bottom:0.5rem;">
+        <summary>¿Puedo llevar mascotas en el vuelo?</summary>
+        <div>Puedes viajar con mascotas pequeñas en cabina o documentadas, según las políticas de la aerolínea. Consulta las condiciones y avisa al hacer la reserva.</div>
+      </details>
+      <details style="margin-bottom:0.5rem;">
+        <summary>¿Cómo puedo cambiar o cancelar mi vuelo?</summary>
+        <div>Puedes gestionar cambios o cancelaciones directamente en el sitio de Copa Airlines, con tu código de reserva, o contactando nuestro servicio al cliente.</div>
+      </details>
+      <details style="margin-bottom:0.5rem;">
+        <summary>¿Qué equipaje puedo llevar incluido?</summary>
+        <div>Generalmente incluye una maleta de mano y un artículo personal. Verifica tu tarifa para conocer el equipaje registrado permitido.</div>
+      </details>
+      <details style="margin-bottom:0.5rem;">
+        <summary>¿Necesito visa para viajar a Miami?</summary>
+        <div>Depende de tu nacionalidad. Por favor verifica los requisitos de visado con la embajada o consulado de Estados Unidos en tu país.</div>
+      </details>
+      <details>
+        <summary>¿Cómo hago check-in?</summary>
+        <div>Puedes hacer check-in en línea 24 horas antes del vuelo o directamente en el aeropuerto.</div>
+      </details>
+    </div>
+
+    <!-- CARRUSEL DE CLIMAS FALSOS -->
+    <h3 style="color:#1f4e79; font-size:1.16rem; margin-bottom:1.15rem;">
+      Climas en destinos top de Florida
+    </h3>
+    <div style="width:100%; max-width: 100%; overflow-x: auto; padding-bottom:0.5rem;">
+      <div style="display:flex; gap:1.1rem; min-width:600px;">
+        <!-- Slide 1 -->
+        <div style="background:#f0f8ff; border-radius:13px; box-shadow:0 2px 10px #0070b81b; padding:1.2rem; min-width:140px; text-align:center;">
+          <div style="font-size:2.2rem;">🌴</div>
+          <div style="font-weight:700; font-size:1.08rem; color:#0b8457;">Miami Beach</div>
+          <div style="font-size:1.4rem; margin:0.3rem 0;">30°C</div>
+          <div style="color:#26547c; font-size:0.98rem;">Soleado</div>
+        </div>
+        <!-- Slide 2 -->
+        <div style="background:#e9f7ef; border-radius:13px; box-shadow:0 2px 10px #0b84571b; padding:1.2rem; min-width:140px; text-align:center;">
+          <div style="font-size:2.2rem;">⛈️</div>
+          <div style="font-weight:700; font-size:1.08rem; color:#178150;">Orlando</div>
+          <div style="font-size:1.4rem; margin:0.3rem 0;">26°C</div>
+          <div style="color:#178150; font-size:0.98rem;">Tormenta eléctrica</div>
+        </div>
+        <!-- Slide 3 -->
+        <div style="background:#fff7e6; border-radius:13px; box-shadow:0 2px 10px #ffb30022; padding:1.2rem; min-width:140px; text-align:center;">
+          <div style="font-size:2.2rem;">⛅</div>
+          <div style="font-weight:700; font-size:1.08rem; color:#ff9800;">Tampa</div>
+          <div style="font-size:1.4rem; margin:0.3rem 0;">28°C</div>
+          <div style="color:#ff9800; font-size:0.98rem;">Parcialmente nublado</div>
+        </div>
+        <!-- Slide 4 -->
+        <div style="background:#f3e6ff; border-radius:13px; box-shadow:0 2px 10px #8a36ff22; padding:1.2rem; min-width:140px; text-align:center;">
+          <div style="font-size:2.2rem;">🌧️</div>
+          <div style="font-weight:700; font-size:1.08rem; color:#8a36ff;">Fort Lauderdale</div>
+          <div style="font-size:1.4rem; margin:0.3rem 0;">25°C</div>
+          <div style="color:#8a36ff; font-size:0.98rem;">Lluvia ligera</div>
+        </div>
+        <!-- Slide 5 -->
+        <div style="background:#e1f5fe; border-radius:13px; box-shadow:0 2px 10px #00bcd422; padding:1.2rem; min-width:140px; text-align:center;">
+          <div style="font-size:2.2rem;">🌞</div>
+          <div style="font-weight:700; font-size:1.08rem; color:#00bcd4;">Key West</div>
+          <div style="font-size:1.4rem; margin:0.3rem 0;">32°C</div>
+          <div style="color:#00bcd4; font-size:0.98rem;">Soleado</div>
+        </div>
+        <!-- Slide 6 -->
+        <div style="background:#ffe0e0; border-radius:13px; box-shadow:0 2px 10px #ff53a622; padding:1.2rem; min-width:140px; text-align:center;">
+          <div style="font-size:2.2rem;">🌬️</div>
+          <div style="font-weight:700; font-size:1.08rem; color:#ff53a6;">Jacksonville</div>
+          <div style="font-size:1.4rem; margin:0.3rem 0;">27°C</div>
+          <div style="color:#ff53a6; font-size:0.98rem;">Viento moderado</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1.15rem; color:#888; font-size:0.98rem;">
+      *Temperaturas y estados simulados para visualización*
+    </p>
   </div>
 
-<section class="reservas-grid">
-
-  
-<div class="vuelos-lateral mapa-destinos">
-  <img src="assets/vuelos/mapa-copa.png" alt="Mapa de destinos Copa Airlines" />
-  <p class="mapa-caption">¡Explorá más de 80 destinos con Copa Airlines!</p>
-  <a href="https://www.flightradar24.com/13.70,-85.47/6" target="_blank" class="btn-mapa-vivo">
-    Ver Mapa de Vuelos en Vivo ✈️
-  </a>
-</div>
-  <!-- MAPA DE DESTINOS (IZQUIERDA de Vuelos) -->
-
-  <!-- VUELOS (CENTRO) -->
+  <!-- COLUMNA CENTRAL: Formulario de vuelos -->
   <div class="reservas-col vuelos-col">
     <img src="assets/reservas/vuelo/vuelobanner.png" alt="Copa Airlines Banner" class="banner-vuelos-horizontal">
     <h2 class="titulo-vertical-superior vuelos">Vuelos</h2>
@@ -242,7 +318,7 @@
     </div>
   </div>
 
-  <!-- OFERTAS DEL MES (DERECHA de Vuelos) -->
+  <!-- COLUMNA DERECHA: Ofertas -->
   <div class="vuelos-lateral promo">
     <h3>Ofertas del mes ✈️</h3>
     <ul>
@@ -287,4 +363,3 @@
   <option value="Singapore, SG (SIN)">
   <option value="Hong Kong, HK (HKG)">
 </datalist>
-

@@ -1,6 +1,335 @@
 [
-  { "src": "assets/galeria/Piscina_de_noche.png", "alt": "Piscina de noche" },
+  {
+    "src": "assets/galeria/amenidades/bjscahi-spa-.avif",
+    "alt": "Spa",
+    "categoria": "Amenities"
+  },
+  {
+    "src": "assets/galeria/amenidades/bjscahi-swimming-pool-.jpg",
+    "alt": "Swimming Pool",
+    "categoria": "Amenities"
+  },
+  {
+    "src": "assets/galeria/amenidades/bjsca-thespacefarmkids-garden-1-.jpg",
+    "alt": "Kids Garden 1",
+    "categoria": "Amenities"
+  },
+  {
+    "src": "assets/galeria/amenidades/bjsca-thespacefarmkids-garden-2-.jpg",
+    "alt": "Kids Garden 2",
+    "categoria": "Amenities"
+  },
 
-    { "src": "assets/galeria/lobby.png", "alt": "Vista al lobby" },
-    { "src": "assets/galeria/foto3.png", "alt": "Habitación principal" }
+  {
+    "src": "assets/galeria/comidas/bjscahi360-casual-dining.jpg",
+    "alt": "360 Casual Dining",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-compass-grill.jpg",
+    "alt": "Compass Grill",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-compass-grill-cuisines-.avif",
+    "alt": "Compass Grill Cuisines",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-compass-grill-cuisines-2-.jpg",
+    "alt": "Compass Grill Cuisines 2",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-compass-grill-wine-room.jpg",
+    "alt": "Compass Grill Wine Room",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-long-bar.jpg",
+    "alt": "Long Bar",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-long-bar-cigar-lounge.jpg",
+    "alt": "Long Bar Cigar Lounge",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-my-china-restaurant1.avif",
+    "alt": "My China Restaurant 1",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-my-china-restaurant-2.jpg",
+    "alt": "My China Restaurant 2",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-my-china-vip-room.jpg",
+    "alt": "My China VIP Room",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-yueshang-cantonese-cuisines-.jpg",
+    "alt": "Yueshang Cantonese Cuisines",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjscahi-yue-shang-restaurant-vip-room.avif",
+    "alt": "Yue Shang G Restaurant VIP Room",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjsca-thepointlobbybar-caffe.jpg",
+    "alt": "The Point Lobby Bar Caffe",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/bjsca-thepointlobbybar-caffe3.jpg",
+    "alt": "The Point Lobby Bar Caffe 3",
+    "categoria": "Dining"
+  },
+  {
+    "src": "assets/galeria/comidas/yueshang-mychina-restaurant-hiltong-beijing-capital-airport.avif",
+    "alt": "Yueshang My China Hilton Beijing Capital Airport",
+    "categoria": "Dining"
+  },
+
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroom-han-classroom.jpg",
+    "alt": "Ballroom Han Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroomhan-roundtable.jpg",
+    "alt": "Ballroom Han Roundtable",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroom-qin-classroom.jpg",
+    "alt": "Ballroom Qin Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroom-qinhan-foryer.jpg",
+    "alt": "Ballroom Qinhan Foyer",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroom-qin-island.avif",
+    "alt": "Ballroom Qin Island",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroom-song-classroom.avif",
+    "alt": "Ballroom Song Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroom-song-island.jpg",
+    "alt": "Ballroom Song Island",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroomsong-roundtable.jpg",
+    "alt": "Ballroom Song Roundtable",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroomtang-classroom.jpg",
+    "alt": "Ballroom Tang Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroomtang-island.jpg",
+    "alt": "Ballroom Tang Island",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroomtang-roundtable.jpg",
+    "alt": "Ballroom Tang Roundtable",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-ballroomtangsong-island.jpg",
+    "alt": "Ballroom Tang Song Island",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom17-classroom.jpg",
+    "alt": "Meeting Room 17 Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom17-island.jpg",
+    "alt": "Meeting Room 17 Island",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom-26-classroom.jpg",
+    "alt": "Meeting Room 26 Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom-26-double-u.jpg",
+    "alt": "Meeting Room 26 Double U",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom26-fishbone.jpg",
+    "alt": "Meeting Room 26 Fishbone",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom-26-roundtable.jpg",
+    "alt": "Meeting Room 26 Roundtable",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom27-classroom.jpg",
+    "alt": "Meeting Room 27 Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom27-island.jpg",
+    "alt": "Meeting Room 27 Island",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom28-roundtable.avif",
+    "alt": "Meeting Room 28 Roundtable",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom28-u.jpg",
+    "alt": "Meeting Room 28 U",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom31-32-island.jpg",
+    "alt": "Meeting Room 31-32 Island",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom31-u.jpg",
+    "alt": "Meeting Room 31 U",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom32-theater.avif",
+    "alt": "Meeting Room 32 Theater",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom33-34-roundtable.jpg",
+    "alt": "Meeting Room 33-34 Roundtable",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-meetingroom33-34-u.jpg",
+    "alt": "Meeting Room 33-34 U",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-qinhan-ballroom-roundtable.jpg",
+    "alt": "Qinhan Ballroom Roundtable",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-tangsong-ballroom-classroom.jpg",
+    "alt": "Tangsong Ballroom Classroom",
+    "categoria": "Events"
+  },
+  {
+    "src": "assets/galeria/eventos/bjsca-tangsong-ballroom-foryer.jpg",
+    "alt": "Tangsong Ballroom Foyer",
+    "categoria": "Events"
+  },
+
+  {
+    "src": "assets/galeria/habitaciones/bjsca-family-king-plus-room-.jpg",
+    "alt": "Family King Plus Room",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjscahi360-casual-dining.jpg",
+    "alt": "360 Casual Dining",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-king-hilton-guest-room-bathroom.jpg",
+    "alt": "King Hilton Guest Room Bathroom",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-king-hilton-guest-room-daytime.jpg",
+    "alt": "King Hilton Guest Room Daytime",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-king-hilton-guest-room-inward-facing.jpg",
+    "alt": "King Hilton Guest Room Inward Facing",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-king-premier-suite-bathroom.jpg",
+    "alt": "King Premier Suite Bathroom",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-king-premier-suite-livingroom.jpg",
+    "alt": "King Premier Suite Livingroom",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-presidential-suite-bathroom.jpg",
+    "alt": "Presidential Suite Bathroom",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-presidential-suite-dinning-area.jpg",
+    "alt": "Presidential Suite Dining Area",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-presidential-suite-gym.jpg",
+    "alt": "Presidential Suite Gym",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-presidential-suite-livingroom.jpg",
+    "alt": "Presidential Suite Livingroom",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-twin-hilton-executive.jpg",
+    "alt": "Twin Hilton Executive",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-twin-hilton-guest-room.jpg",
+    "alt": "Twin Hilton Guest Room",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-two-bedrooms-duplex-suite-livingroom.avif",
+    "alt": "Two Bedrooms Duplex Suite Livingroom",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/bjsca-two-bedrooms-duplex-suite-wedding-.avif",
+    "alt": "Two Bedrooms Duplex Suite Wedding",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/hilton-connected-room.jpg",
+    "alt": "Hilton Connected Room",
+    "categoria": "Rooms"
+  },
+  {
+    "src": "assets/galeria/habitaciones/presidentialsuite.jpg",
+    "alt": "Presidential Suite",
+    "categoria": "Rooms"
+  }
 ]

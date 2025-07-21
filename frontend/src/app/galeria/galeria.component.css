@@ -1,95 +1,395 @@
-.galeria-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ---- Header tipo Hilton ---- */
+.hotel-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 7rem 0 1.2rem 0;
+  border-bottom: 1.5px solid #e6e6e6;
+  background: #fff;
 }
+.hotel-logo { width: 84px; border-radius: 16px; }
+.hotel-header h1 { font-size: 2.1rem; color: #2a3a5e; margin: 0 0 0.25rem 0; }
+.hotel-header a { color: #154a9a; text-decoration: underline; font-size: 1.06rem; }
 
-.galeria-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #222;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.8rem;
-}
-
-.galeria-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  will-change: transform;
-}
-
-.galeria-img:hover {
-  transform: scale(1.07);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-}
-
-/* Mensaje de no imágenes */
-.no-imagenes {
-  color: #888;
-  font-style: italic;
-  text-align: center;
-  margin-top: 4rem;
-  font-size: 1.1rem;
-}
-
-/* Modal para imagen grande */
-.modal-backdrop {
-  position: fixed;
+/* ---- Sticky barra de reservas ---- */
+.sticky-reservas-bar {
+  position: sticky;
   top: 0;
-  left: 0;
+  z-index: 999;
+  background: #fff;
+  border-bottom: 1.5px solid #e6e6e6;
+  box-shadow: 0 2px 14px #0001;
+  padding: 1rem 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: none;
+}
+.sticky-reservas-campos {
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  cursor: pointer; /* Permite cerrar el modal haciendo click fuera de la imagen */
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-
-.modal-backdrop.active {
-  display: flex;
-}
-
-.modal-img {
-  max-width: 90%;
-  max-height: 90vh;
+.sticky-reservas-campos input,
+.sticky-reservas-campos button {
+  font-size: 1rem;
+  padding: 0.7em 1em;
   border-radius: 10px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
-  animation: fadeInScale 0.3s ease forwards;
-  cursor: default; /* No mostrar manita sobre la imagen */
+  border: 1px solid #d6d6d6;
+  outline: none;
+}
+.sticky-reservas-campos input {
+  width: 140px;
+  background: #f9f9f9;
+}
+.sticky-reservas-campos button {
+  background: #0d3b66;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 120px;
+  transition: background 0.18s;
+}
+.sticky-reservas-campos button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
+/* ---- Grid centrada ---- */
+.reservas-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(340px, 460px) 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 240px;
+  margin: 4rem auto 0 auto;
+}
+
+/* ---- Columna central del formulario ---- */
+.vuelos-col {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 36px #092c7c18;
+  margin: 1.5rem auto 2.5rem auto;
+  padding: 2.5rem 2rem;
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vuelos-col h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.7rem;
+  color: #002c5f;
+}
+.form-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+.form-campos label {
+  font-size: 1rem;
+  color: #1d2746;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.form-campos input {
+  padding: 0.7em 1em;
+  border-radius: 9px;
+  border: 1px solid #d6d6d6;
+  background: #f9f9f9;
+  font-size: 1.04rem;
+}
+.form-campos button {
+  background: #0d3b66;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8em 2em;
+  margin-top: 1.4rem;
+  font-size: 1.13rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.17s;
+}
+.form-campos button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.loader-avion {
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 50%;
+  border: 3px solid #0d3b66;
+  border-top: 3px solid #fff;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.mensaje-exito {
+  color: #007a1e;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.18rem;
+  background: #e9ffe3;
+  padding: 1.1rem 0.8rem;
+  border-radius: 10px;
+}
+
+/* ---- Tabs de galería ---- */
+.gallery-tabs {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  padding: 2rem 0 1rem 0;
+  background: #fff;
+  border-bottom: 1.5px solid #e6e6e6;
+}
+.gallery-tabs button {
+  background: none;
+  border: none;
+  font-size: 1.13rem;
+  color: #1a2b56;
+  padding: 0.4rem 0.7rem;
+  border-bottom: 2.5px solid transparent;
+  cursor: pointer;
+  transition: color 0.19s, border 0.19s;
+}
+.gallery-tabs button.active {
+  border-bottom: 2.5px solid #092c7c;
+  color: #092c7c;
+  font-weight: 700;
+}
+
+/* ---- Grid de imágenes ---- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 1.2rem 0 2rem 0;
+  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+}
+.gallery-img {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1.5 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0001;
+  cursor: pointer;
+  transition: box-shadow 0.16s, transform 0.18s;
+  background: #f6f6f6;
+  display: block;
+}
+.gallery-img:hover {
+  box-shadow: 0 10px 32px #092c7c25;
+  transform: scale(1.04);
+}
+
+/* ---- Modal de imagen grande ---- */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(22,32,41,0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: modalIn 0.2s;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: 1; transform: scale(1); }
+}
+.modal img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 20px;
+  box-shadow: 0 10px 44px #0009;
+  background: #fff;
+  object-fit: contain;
+  display: block;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .reservas-grid { grid-template-columns: 1fr; max-width: 99vw; }
+  .vuelos-col { max-width: 98vw; padding: 1.2rem 0.3rem; }
+  .sticky-reservas-campos input { width: 96px; font-size: 0.92rem; }
+  .sticky-reservas-campos { gap: 0.8rem; }
+  .gallery-grid { max-width: 98vw; }
+}
+@media (max-width: 500px) {
+  .vuelos-col { padding: 0.7rem 0.08rem; }
+  .form-campos label { font-size: 0.97rem; }
+  .sticky-reservas-campos { flex-direction: column; gap: 0.6rem; }
+  .sticky-reservas-bar { padding: 0.6rem 0; }
+  .gallery-tabs { gap: 1.1rem; padding: 1.2rem 0 0.5rem 0; }
+}
+@media (max-width: 440px) {
+  .gallery-img { max-width: 99vw; border-radius: 10px; }
+  .modal img { max-width: 98vw; border-radius: 12px; }
+  .hotel-header h1 { font-size: 1.25rem; }
+}
+.reserva-form {
+  background: #fff;
+  box-shadow: 0 2px 12px #e2e2e2;
+  border-radius: 10px;
+  padding: 0.65rem 1.2rem 0.85rem 1.2rem;
+  margin: 1.4rem 0 2.2rem 0;
+  max-width: 1700px;    /* <--- Así la hacés larga tipo Hilton */
+  min-width: 360px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.reserva-row {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* CAMBIA flex-end por flex-start */
+  width: 100%;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  min-width: 110px;
+  flex: 0 1 140px;
+  margin-bottom: 0.4rem;
+}
+
+.campo label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #263963;
+  margin-bottom: 0.10rem;
+  margin-left: 0.05rem;
+}
+
+.campo input,
+.campo select {
+  padding: 0.47rem 0.6rem;
+  font-size: 1.01rem;
+  border: 1.3px solid #b8c0d0;
+  border-radius: 6px;
+  outline: none;
+  background: #fafbfc;
+  transition: border 0.14s, box-shadow 0.13s;
+  width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: #365c9c;
+  box-shadow: 0 0 5px #365c9c23;
+}
+.campo-boton {
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Esto centra el botón en su bloque */
+  flex: 0 1 140px;         /* Igual que el resto de campos */
+  margin-bottom: 0.5rem;
+}
+
+
+
+.campo-boton button {
+  background: #17355b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.54rem 1.1rem;  /* Hilton: más compacto */
+  font-size: 0.88rem;      /* Pequeño pero legible */
+  font-weight: 700;
+  text-transform: uppercase; /* TEXTO EN MAYÚSCULAS */
+  cursor: pointer;
+  transition: background 0.15s, transform 0.10s, box-shadow 0.12s;
+  box-shadow: 0 1px 6px #17355b11;
+  letter-spacing: 0.5px;
+}
+.campo-boton button:hover,
+.campo-boton button:focus {
+  background: #27548b;
+  transform: scale(1.02);
+  box-shadow: 0 3px 11px #17355b23;
+}
+@media (max-width: 900px) {
+  .reserva-form {
+    padding: 0.7rem 0.5rem 1rem 0.5rem;
+    max-width: 99vw;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  .reserva-row {
+    flex-wrap: wrap;
+    gap: 0.8rem;
   }
 }
 
-/* Responsive: Ajustar altura imágenes y padding en móviles */
-@media (max-width: 600px) {
-  .galeria-container {
-    padding: 1rem; /* Padding reducido para móviles */
+@media (max-width: 650px) {
+  .reserva-row {
+    flex-direction: column;
+    gap: 0.45rem;
+    align-items: stretch;
   }
-  .galeria-img {
-    height: 150px;
+  .campo-boton {
+    width: 100%;
+    margin-top: 0.8rem;
   }
+  .campo-boton button {
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 1rem 0;
+  }
+
+
+  .reserva-row {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.campo-total {
+  min-width: 220px;
+  max-width: 280px;
+  padding-left: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1.18;
+  height: 48px; /* Ajustalo si tu botón tiene otra altura */
+}
+
+@media (max-width: 1100px) {
+  .campo-total {
+    min-width: 160px;
+    font-size: 0.99rem;
+    height: auto;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+  .reserva-row {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+}
+
 }

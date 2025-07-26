@@ -20,6 +20,7 @@
     "@angular/service-worker": "20.0.6",
     "@angular/cli": "20.0.3",
     "@angular-devkit/build-angular": "20.0.3",
+    "@angular/build": "20.0.6",               // <-- AQUÍ en dependencies
     "jspdf": "^3.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -36,7 +37,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.2"
-    "@angular/build": "20.0.6"
-
   }
 }

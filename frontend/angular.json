@@ -24,7 +24,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "404.html"
             ],
             "styles": [
               "src/styles.css"
@@ -84,11 +85,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "404.html"
             ],
-            "styles": [
-
-            ]
+            "styles": []
           }
         }
       }

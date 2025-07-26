@@ -1,13 +1,11 @@
-{
-  "name": "frontend",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --port $PORT",
-    "build": "ng build --configuration production",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+"scripts": {
+  "ng": "ng",
+  "start": "ng serve --host 0.0.0.0 --port $PORT",
+  "build": "ng build --configuration production",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test"
+},
+
   "private": true,
   "dependencies": {
     "@angular/animations": "20.0.6",

@@ -1,4 +1,57 @@
-<!-- Ejemplo en habitaciones.component.html -->
-<div style="text-align:center; padding: 3em 0;">
-  <h2>Sección de Contacto</h2>
+<div class="contact-bg">
+  <div class="contact-container">
+    <form class="contact-form" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="contacto.nombre"
+        required
+        placeholder="Tu nombre"
+      />
+
+      <label for="email">Correo electrónico</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="contacto.email"
+        required
+        placeholder="Tu correo"
+      />
+
+      <label for="mensaje">Mensaje</label>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        [(ngModel)]="contacto.mensaje"
+        rows="3"
+        required
+        placeholder="¿En qué podemos ayudarte?"
+      ></textarea>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? "Enviando..." : "Enviar" }}
+      </button>
+
+      <div *ngIf="success" class="contact-success">¡Mensaje enviado exitosamente!</div>
+      <div *ngIf="error" class="contact-error">Ocurrió un error, intentá de nuevo.</div>
+    </form>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h3>Preguntas Frecuentes</h3>
+      <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+        <button type="button" (click)="toggleFaq(i)">
+          {{ faq.pregunta }}
+          <span [ngClass]="{'open': faq.open}">▼</span>
+        </button>
+        <div class="faq-answer" *ngIf="faq.open">
+          {{ faq.respuesta }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

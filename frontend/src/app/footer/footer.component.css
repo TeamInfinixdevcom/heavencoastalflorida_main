@@ -186,3 +186,41 @@
     margin-top: 1.3em;
   }
 }
+.neon-powered {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #ff53a6;
+  text-shadow:
+    0 0 5px #ff53a6cc,
+    0 0 10px #ff53a6aa,
+    0 0 20px #8a36ff,
+    0 0 30px #8a36ffaa;
+  animation: pulseNeon 2.8s ease-in-out infinite alternate;
+  letter-spacing: 1.4px;
+  font-weight: bold;
+}
+
+.neon-powered strong {
+  color: #fff;
+  text-shadow:
+    0 0 6px #fff,
+    0 0 16px #ff53a6,
+    0 0 24px #8a36ff;
+}
+
+@keyframes pulseNeon {
+  from {
+    filter: brightness(1.1);
+    text-shadow:
+      0 0 4px #ff53a655,
+      0 0 8px #ff53a6,
+      0 0 16px #8a36ff;
+  }
+  to {
+    filter: brightness(1.5);
+    text-shadow:
+      0 0 8px #ff53a6,
+      0 0 18px #8a36ff,
+      0 0 32px #8a36ff88;
+  }
+}
